@@ -130,52 +130,52 @@ function creatRecord()
             });
         }
     }
-    //function isChanged(objectId){
-    //    var obj = record.record.find("#" + objectId);
-    //    var sendData = {
-    //        "id": parseInt(record.getId()),
-    //        "isMA": false,
-    //        nameStudent : record[nameStudent],
-    //        surnameStudent : record[surnameStudent],
-    //        mailStudent : record[emailStudent],
-    //        titlePL : record[titlePL],
-    //        titleEN : record[titleEN],
-    //        namePromoter : record[namePromotor],
-    //        surnamePromoter : record[surnamePromotor],
-    //        abstractPL : record[abstractPL],
-    //        abstractEN : record[abstractEN],
-    //        keyWordsPL : record[keyWordsPL],
-    //        keyWordsEN : record[keyWordsEN]
-    //    }
-    //    $.ajax({
-    //        url: "hasChangeRecord",
-    //        contentType : 'application/json; charset=utf-8',
-    //        dataType : 'json',
-    //        type: "POST",
-    //        data: JSON.stringify(sendData), // Note it is important
-    //        //contentType: 'application/json',
-    //        success: function(answer){
-    //            if(answer){
-    //                //if(obj.hasClass("has-error")) {
-    //                //    obj.removeClass("has-change");
-    //                //}
-    //                //else
-    //                //    obj.addClass("has-change");
-    //                if(record.linkNavPanel.hasClass("has-error"))
-    //                    record.linkNavPanel.removeClass("has-change");
-    //                else
-    //                    record.linkNavPanel.addClass("has-change");
-    //                record.changed = true;
-    //            } else {
-    //                record.linkNavPanel.removeClass("has-change");
-    //                obj.removeClass("has-change");
-    //            }
-    //        },
-    //        error: function(request, status, error){
-    //            $("body").html(request.responseText);
-    //        }
-    //    });
-    //}
+    function isChanged(objectId){
+        var obj = record.record.find("#" + objectId);
+        var sendData = {
+            "id": parseInt(record.getId()),
+            "isMA": false,
+            nameStudent : record[nameStudent],
+            surnameStudent : record[surnameStudent],
+            mailStudent : record[emailStudent],
+            titlePL : record[titlePL],
+            titleEN : record[titleEN],
+            namePromoter : record[namePromotor],
+            surnamePromoter : record[surnamePromotor],
+            abstractPL : record[abstractPL],
+            abstractEN : record[abstractEN],
+            keyWordsPL : record[keyWordsPL],
+            keyWordsEN : record[keyWordsEN]
+        }
+        $.ajax({
+            url: "hasChangeRecord",
+            contentType : 'application/json; charset=utf-8',
+            dataType : 'json',
+            type: "POST",
+            data: JSON.stringify(sendData), // Note it is important
+            //contentType: 'application/json',
+            success: function(answer){
+                if(answer){
+                    //if(obj.hasClass("has-error")) {
+                    //    obj.removeClass("has-change");
+                    //}
+                    //else
+                    //    obj.addClass("has-change");
+                    if(record.linkNavPanel.hasClass("has-error"))
+                        record.linkNavPanel.removeClass("has-change");
+                    else
+                        record.linkNavPanel.addClass("has-change");
+                    record.changed = true;
+                } else {
+                    record.linkNavPanel.removeClass("has-change");
+                    obj.removeClass("has-change");
+                }
+            },
+            error: function(request, status, error){
+                $("body").html(request.responseText);
+            }
+        });
+    }
     record.record = $("div#contentPanel.panel.panel-default").clone(true);
     record.linkNavPanel = $("a#linkToStudent").clone(true);
 
@@ -231,40 +231,40 @@ function creatRecord()
     record.linkNavPanel.find("#delete").click(record.deleteOnServer());
     record.record.find("#save").click(record.saveOnServer());
     record.record.find("#delete").click(record.deleteOnServer());
-    //record.record.find("#" + idFields[nameStudent]).focusout(isEmpty(idFields[nameStudent], record.setNameStudent));
-    //record.record.find("#" + idFields[surnameStudent]).focusout(isEmpty(idFields[surnameStudent], record.setSurnameStudent));
-    //record.record.find("#" + idFields[emailStudent]).focusout(isEmpty(idFields[emailStudent]));
-    //record.record.find("#" + idFields[titlePL]).focusout(isEmpty(idFields[titlePL]));
-    //record.record.find("#" + idFields[titleEN]).focusout(isEmpty(idFields[titleEN]));
-    //record.record.find("#" + idFields[titlePL]).focusout(isEmpty(idFields[abstractPL]));
-    //record.record.find("#" + idFields[titleEN]).focusout(isEmpty(idFields[abstractEN]));
-    //record.record.find("#" + idFields[namePromotor]).focusout(isEmpty(idFields[namePromotor]));
-    //record.record.find("#" + idFields[surnamePromotor]).focusout(isEmpty(idFields[surnamePromotor]));
-    //record.record.find("#" + idFields[keyWordsPL]).focusout(isEmpty(idFields[keyWordsPL]));
-    //record.record.find("#" + idFields[keyWordsEN]).focusout(isEmpty(idFields[keyWordsEN]));
+    record.record.find("#" + idFields[nameStudent]).focusout(isEmpty(idFields[nameStudent], record.setNameStudent));
+    record.record.find("#" + idFields[surnameStudent]).focusout(isEmpty(idFields[surnameStudent], record.setSurnameStudent));
+    record.record.find("#" + idFields[emailStudent]).focusout(isEmpty(idFields[emailStudent]));
+    record.record.find("#" + idFields[titlePL]).focusout(isEmpty(idFields[titlePL]));
+    record.record.find("#" + idFields[titleEN]).focusout(isEmpty(idFields[titleEN]));
+    record.record.find("#" + idFields[titlePL]).focusout(isEmpty(idFields[abstractPL]));
+    record.record.find("#" + idFields[titleEN]).focusout(isEmpty(idFields[abstractEN]));
+    record.record.find("#" + idFields[namePromotor]).focusout(isEmpty(idFields[namePromotor]));
+    record.record.find("#" + idFields[surnamePromotor]).focusout(isEmpty(idFields[surnamePromotor]));
+    record.record.find("#" + idFields[keyWordsPL]).focusout(isEmpty(idFields[keyWordsPL]));
+    record.record.find("#" + idFields[keyWordsEN]).focusout(isEmpty(idFields[keyWordsEN]));
 
-    //function isEmpty(objectId, setter, getter){
-    //    var object = record.record.find("#" + objectId);
-    //    setter = typeof setter !== 'undefined' ? setter : setterInput(objectId);
-    //    getter = typeof getter !== 'undefined' ? getter : getterInput(objectId);
-    //    return function() {
-    //        var val = object.val();
-    //        setter(getter());
-    //        if (val.length < 1) {
-    //            object.addClass("has-error");
-    //            //if(object.hasClass("has-change"))
-    //            //    object.removeClass("has-change");
-    //            record.linkNavPanel.addClass("has-error");
-    //            if(record.linkNavPanel.hasClass("has-change"))
-    //                record.linkNavPanel.removeClass("has-change");
-    //        } else {
-    //            object.removeClass("has-error");
-    //            if(!record.hasError())
-    //                record.linkNavPanel.removeClass("has-error");
-    //        }
-    //        isChanged(objectId);
-    //    }
-    //}
+    function isEmpty(objectId, setter, getter){
+        var object = record.record.find("#" + objectId);
+        setter = typeof setter !== 'undefined' ? setter : setterInput(objectId);
+        getter = typeof getter !== 'undefined' ? getter : getterInput(objectId);
+        return function() {
+            var val = object.val();
+            setter(getter());
+            if (val.length < 1) {
+                object.addClass("has-error");
+                //if(object.hasClass("has-change"))
+                //    object.removeClass("has-change");
+                record.linkNavPanel.addClass("has-error");
+                if(record.linkNavPanel.hasClass("has-change"))
+                    record.linkNavPanel.removeClass("has-change");
+            } else {
+                object.removeClass("has-error");
+                if(!record.hasError())
+                    record.linkNavPanel.removeClass("has-error");
+            }
+            isChanged(objectId);
+        }
+    }
 
     return record;
 }
