@@ -1,0 +1,16 @@
+# Java
+*.class
+
+# Package files
+*.jar
+*.war
+*.ear
+
+
+# Maven
+target/
+
+
+# Intellij
+.idea/
+*.iml
