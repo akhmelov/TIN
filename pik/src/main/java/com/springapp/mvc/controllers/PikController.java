@@ -36,9 +36,6 @@ public class PikController
         ModelAndView modelAndView = new ModelAndView();
         switch (singInForm.getWho())
         {
-            case Student:
-                modelAndView.setViewName(App.STUDENT);
-                break;
             case Promoter:
                 modelAndView.setViewName(App.PROMOTER);
                 break;

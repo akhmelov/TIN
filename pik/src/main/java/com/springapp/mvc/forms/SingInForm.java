@@ -5,11 +5,11 @@ package com.springapp.mvc.forms;
  */
 public class SingInForm
 {
-    public enum Who {Student, Promoter, Admin};
+    public enum Who {Promoter, Admin};
     private String username;
     private String password;
     private boolean staySigned = false;
-    private Who who = Who.Student;
+    private Who who = Who.Promoter;
 
     public Who getWho()
     {

@@ -1,15 +1,14 @@
 package com.springapp.mvc.controllers;
 
-import com.springapp.mvc.database.DataSourceTinWywalicOnlyExampleForTests;
+import com.springapp.mvc.App;
+import com.springapp.mvc.database.DataSource;
+import com.springapp.mvc.forms.SingInForm;
 import com.springapp.mvc.grains.RecordWywalicExampleForTestsTin;
 import com.springapp.mvc.model.Model;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.ModelAndView;
 
 import java.util.LinkedList;
@@ -19,18 +18,52 @@ import java.util.List;
  * Created by PK on 4/8/2015.
  */
 @Controller
-@RequestMapping("/tin")
+@RequestMapping(App.TIN_CONTROLLER_URL)
 public class TinController
 {
     @Autowired
     private Model model;
     @Autowired
-    private DataSourceTinWywalicOnlyExampleForTests database;
+    private DataSource database;
 
-    @RequestMapping(value = "/maket")
+    @RequestMapping(method = RequestMethod.GET)
+    public ModelAndView home(ModelMap modelMap)
+    {
+        ModelAndView modelAndView = new ModelAndView(App.HOME);
+        modelAndView.addObject("singInForm", new SingInForm());
+        return modelAndView;
+    }
+
+    @RequestMapping(value = App.HOME, method = RequestMethod.POST)
+    public ModelAndView homePost(@ModelAttribute("SpringWeb") SingInForm singInForm)
+    {
+        ModelAndView modelAndView = new ModelAndView();
+        switch (singInForm.getWho())
+        {
+            case Promoter:
+                modelAndView = basketsPage();
+                break;
+            case Admin:
+                modelAndView.setViewName(App.ADMIN);
+                break;
+            default:
+                modelAndView.setViewName(App.HOME);
+        }
+        return modelAndView;
+    }
+
+    @RequestMapping(value = App.BASKETS, method = RequestMethod.GET)
+    public ModelAndView basketsPage()
+    {
+        ModelAndView modelAndView = new ModelAndView();
+        modelAndView.setViewName(App.BASKETS);
+        return  modelAndView;
+    }
+
+    @RequestMapping(value = App.BASKET)
     public ModelAndView homeTin(ModelMap modelMap)
     {
-        ModelAndView modelAndView = new ModelAndView("maket");
+        ModelAndView modelAndView = new ModelAndView(App.BASKET);
         return modelAndView;
     }
 
@@ -48,7 +81,7 @@ public class TinController
     {
         //TODO
         database.saveRecordsByBasket(1, 1, records);
-        ModelAndView modelAndView = new ModelAndView("maket");
+        ModelAndView modelAndView = new ModelAndView("basket");
         return modelAndView;
     }
 
