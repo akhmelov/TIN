@@ -3,7 +3,7 @@ package com.springapp.mvc.controllers;
 import com.springapp.mvc.App;
 import com.springapp.mvc.database.DataSource;
 import com.springapp.mvc.forms.SingInForm;
-import com.springapp.mvc.grains.RecordWywalicExampleForTestsTin;
+import com.springapp.mvc.grains.Record;
 import com.springapp.mvc.model.Model;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -11,8 +11,10 @@ import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.ModelAndView;
 
+import java.util.HashMap;
 import java.util.LinkedList;
 import java.util.List;
+import java.util.Map;
 
 /**
  * Created by PK on 4/8/2015.
@@ -70,23 +72,26 @@ public class TinController
 
     @RequestMapping(value = "/getRecordsJson", method = RequestMethod.POST)
     public @ResponseBody
-    List<RecordWywalicExampleForTestsTin> getRecords()
+    List<Record> getRecords()
     {
         //TODO
-        return database.getRecordsByBasket(1, 1);
+        List<Record> tmp = new LinkedList<Record>(database.getRecordsByBasket(1, 1).values());
+        return tmp;
     }
 
     @RequestMapping(value = "/saveRecords", method = RequestMethod.POST)
-    public ModelAndView saveRecords(@RequestBody LinkedList<RecordWywalicExampleForTestsTin> records)
+    public ModelAndView saveRecords(@RequestBody LinkedList<Record> records)
     {
         //TODO
-        database.saveRecordsByBasket(1, 1, records);
+        Map<Integer, Record> map = new HashMap<Integer, Record>();
+        for (Record i : records) map.put(i.getId(), i);
+        database.saveRecordsByBasket(1, 1, map);
         ModelAndView modelAndView = new ModelAndView("basket");
         return modelAndView;
     }
 
-    @RequestMapping(value = "/deleteRecord", method = RequestMethod.POST)
-    public @ResponseBody Boolean deleteRecord(int idRecord)
+    @RequestMapping(value = "/deleteRecord", method = RequestMethod.GET)
+    public @ResponseBody Boolean deleteRecord(@RequestParam(value = "idRecord") Integer idRecord)
     {
         //TODO
         if(database.deleteRecord(1, 1, idRecord))
@@ -95,7 +100,7 @@ public class TinController
     }
 
     @RequestMapping(value = "/saveRecord", method = RequestMethod.POST)
-    public @ResponseBody Boolean saveRecord(@RequestBody RecordWywalicExampleForTestsTin record)
+    public @ResponseBody Boolean saveRecord(@RequestBody Record record)
     {
         //TODO
         if(database.saveRecord(1, 1, record.getId(), record))
@@ -104,7 +109,7 @@ public class TinController
     }
 
     @RequestMapping(value = "/hasChangeRecord", method = RequestMethod.POST)
-    public @ResponseBody Boolean hasChangeRecord(@RequestBody RecordWywalicExampleForTestsTin record)
+    public @ResponseBody Boolean hasChangeRecord(@RequestBody Record record)
     {
         //TODO
         if(database.getRecord(1, 1, record.getId()).equals(record))

@@ -118,10 +118,12 @@ function creatRecord()
                     url: "deleteRecord",
                     contentType : 'application/json; charset=utf-8',
                     dataType : 'json',
-                    type: "POST",
-                    data: JSON.stringify(sendData), // Note it is important
+                    type: "GET",
+                    data: sendData, // Note it is important
                     //contentType: 'application/json',
                     success: function(answer){
+                        record.linkNavPanel.remove();
+                        record.record.remove();
                         alert("deleted");
                 },
                 error: function(request, status, error){
