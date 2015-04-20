@@ -1,13 +1,11 @@
 package com.springapp.mvc.database;
 
+import com.springapp.mvc.grains.Basket;
 import com.springapp.mvc.grains.Record;
 import com.sun.org.apache.xalan.internal.xsltc.compiler.util.MultiHashtable;
 import org.springframework.stereotype.Service;
 
-import java.util.HashMap;
-import java.util.LinkedList;
-import java.util.Map;
-import java.util.TreeMap;
+import java.util.*;
 
 /**
  * Created by PK on 4/6/2015.
@@ -55,6 +53,28 @@ public class DataSource implements DataSourceImp
         }
     }
 
+    public LinkedList<Basket> getBaskets(int idPromoter)
+    {
+        LinkedList<Basket> baskets = new LinkedList<Basket>();
+        int n = database.get(idPromoter).size();
+        for(Map<Integer, Record> tmp: database.get(idPromoter))
+        {
+            Basket basket = new Basket();
+            basket.setId(n);
+            basket.setContain(tmp.size());
+            basket.setName("Name-" + n);
+            basket.setDateCreate(new Date());
+            basket.setDateEdit(new Date());
+            n--;
+            baskets.push(basket);
+        }
+        return baskets;
+    }
+    public void addBasket(int idPromoter, String name)
+    {
+        Map<Integer, Record> baskets = new HashMap<Integer, Record>();
+        database.get(idPromoter).push(baskets);
+    }
     public Record getRecord(int idPromoter, int idBasket, int idRecord)
     {
         return database.get(idPromoter).get(idBasket).get(idRecord);

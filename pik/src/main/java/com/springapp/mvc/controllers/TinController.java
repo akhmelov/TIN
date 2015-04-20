@@ -3,6 +3,7 @@ package com.springapp.mvc.controllers;
 import com.springapp.mvc.App;
 import com.springapp.mvc.database.DataSource;
 import com.springapp.mvc.forms.SingInForm;
+import com.springapp.mvc.grains.Basket;
 import com.springapp.mvc.grains.Record;
 import com.springapp.mvc.model.Model;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -11,6 +12,7 @@ import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.ModelAndView;
 
+import javax.servlet.http.HttpServletRequest;
 import java.util.HashMap;
 import java.util.LinkedList;
 import java.util.List;
@@ -49,7 +51,7 @@ public class TinController
                 modelAndView.setViewName(App.ADMIN);
                 break;
             default:
-                modelAndView.setViewName(App.HOME);
+                modelAndView = basketsPage();
         }
         return modelAndView;
     }
@@ -59,6 +61,7 @@ public class TinController
     {
         ModelAndView modelAndView = new ModelAndView();
         modelAndView.setViewName(App.BASKETS);
+        modelAndView.addObject("baskets", database.getBaskets(1));
         return  modelAndView;
     }
 
@@ -69,7 +72,13 @@ public class TinController
         return modelAndView;
     }
 
-
+    @RequestMapping(value = App.BASKETS, method = RequestMethod.POST)
+    public String addNewBasket(HttpServletRequest request)
+    {
+        String basketName = request.getParameter(App.NAME_NEW_BASKET_PARAMETER);
+        database.addBasket(1, basketName);
+        return "redirect:" + App.BASKETS;
+    }
     @RequestMapping(value = "/getRecordsJson", method = RequestMethod.POST)
     public @ResponseBody
     List<Record> getRecords()

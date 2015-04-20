@@ -26,6 +26,21 @@
                     <th></th>
                     <th></th>
                 </tr>
+                <c:forEach var="listVar" items="${baskets}" varStatus="loop">
+                    <tr>
+                        <td><c:out value="${listVar.id}"/></td>
+                        <td><c:out value="${listVar.name}"/></td>
+                        <td><c:out value="${listVar.dateCreate}"/></td>
+                        <td><c:out value="${listVar.dateEdit}"/></td>
+                        <td><c:out value="${listVar.contain}"/></td>
+                        <td>
+                            <span id="<c:out value="${listVar.id}"/>" class="glyphicon glyphicon-pencil" aria-hidden="true"></span>
+                        </td>
+                        <td>
+                            <span id="<c:out value="${listVar.id}"/>" class="glyphicon glyphicon-trash" aria-hidden="true"></span>
+                        </td>
+                    </tr>
+                </c:forEach>
                 <tr>
                     <td>1</td>
                     <td>Nazwa</td>
@@ -40,6 +55,7 @@
                     </td>
                 </tr>
             </table>
+            <button type="button" id="add" class="btn btn-success">Add</button>
         </div>
     </body>
 </html>

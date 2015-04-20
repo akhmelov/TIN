@@ -14,3 +14,6 @@
 
 <link href="<c:url value="/resources/css/maket.css" />" rel="stylesheet">
 <script src="<c:url value="/resources/js/maket.js" />"></script>
+
+<link href="<c:url value="/resources/css/baskets.css" />" rel="stylesheet">
+<script src="<c:url value="/resources/js/baskets.js" />"></script>
