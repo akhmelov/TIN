@@ -1,6 +1,5 @@
 package com.springapp.mvc.model;
 
-import com.springapp.mvc.model.printers.Printers;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
