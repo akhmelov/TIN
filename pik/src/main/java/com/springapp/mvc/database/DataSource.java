@@ -75,6 +75,11 @@ public class DataSource implements DataSourceImp
         Map<Integer, Record> baskets = new HashMap<Integer, Record>();
         database.get(idPromoter).push(baskets);
     }
+    public void deleteBasket(int idPromoter, int idBasket)
+    {
+        database.get(idPromoter).remove(idBasket);
+    }
+
     public Record getRecord(int idPromoter, int idBasket, int idRecord)
     {
         return database.get(idPromoter).get(idBasket).get(idRecord);

@@ -37,7 +37,7 @@
                             <span id="<c:out value="${listVar.id}"/>" class="glyphicon glyphicon-pencil" aria-hidden="true"></span>
                         </td>
                         <td>
-                            <span id="<c:out value="${listVar.id}"/>" class="glyphicon glyphicon-trash" aria-hidden="true"></span>
+                            <span id="<c:out value="${listVar.id}"/>" class="glyphicon glyphicon-trash" onclick="deleteBasket(${listVar.id})" aria-hidden="true"></span>
                         </td>
                     </tr>
                 </c:forEach>

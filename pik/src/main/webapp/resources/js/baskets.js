@@ -25,3 +25,19 @@ $( document ).ready(function() {
         form.submit();
     });
 });
+
+function deleteBasket(id){
+    var form = document.createElement("form");
+    form.setAttribute("method", "POST");
+    form.setAttribute("action", "deleteBasket");
+
+    var hiddenField = document.createElement("input");
+    hiddenField.setAttribute("type", "hidden");
+    hiddenField.setAttribute("name", "idBasket");
+    hiddenField.setAttribute("value", id);
+
+    form.appendChild(hiddenField);
+
+    document.body.appendChild(form);
+    form.submit();
+}

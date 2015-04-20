@@ -79,9 +79,28 @@ public class TinController
         database.addBasket(1, basketName);
         return "redirect:" + App.BASKETS;
     }
+
+    @RequestMapping(value = App.DELETE_BASKET, method = RequestMethod.POST)
+    public String deleteBasket(HttpServletRequest request)
+    {
+        String idBasket = request.getParameter(App.ID_EXIST_BASKET_PARAMETER);
+        int id = Integer.valueOf(idBasket);
+        database.deleteBasket(1, id);
+        return "redirect:" + App.BASKETS;
+    }
+
+    @RequestMapping(value = App.EDIT_BASKET, method = RequestMethod.POST)
+    public String editBasket(HttpServletRequest request)
+    {
+        String idBasket = request.getParameter(App.ID_EXIST_BASKET_PARAMETER);
+        String newBasketName = request.getParameter(App.NAME_NEW_BASKET_PARAMETER);
+        int id = Integer.valueOf(idBasket);
+        database.deleteBasket(1, id);
+        return "redirect:" + App.BASKETS;
+    }
+
     @RequestMapping(value = "/getRecordsJson", method = RequestMethod.POST)
-    public @ResponseBody
-    List<Record> getRecords()
+    public @ResponseBody List<Record> getRecords()
     {
         //TODO
         List<Record> tmp = new LinkedList<Record>(database.getRecordsByBasket(1, 1).values());
