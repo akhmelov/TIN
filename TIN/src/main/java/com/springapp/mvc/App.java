@@ -1,9 +1,17 @@
 package com.springapp.mvc;
 
+import com.springapp.mvc.grains.User;
+import com.springapp.mvc.grains.UserRepository;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.boot.CommandLineRunner;
+import org.springframework.boot.SpringApplication;
+import org.springframework.boot.autoconfigure.SpringBootApplication;
+
 /**
  * Created by PK on 4/8/2015.
  */
-public class App
+@SpringBootApplication
+public class App implements CommandLineRunner
 {
     public static final String TIN_CONTROLLER_URL = "/tin/";
     public static final String HOME = "index";
@@ -26,4 +34,28 @@ public class App
     public static final String PIK_START_PAGE = "index";
     public static final String STUDENT = "student";
     public static final String PROMOTER = "promoter";
+
+
+
+
+    @Autowired
+    UserRepository repository;
+
+    public static void main(String[] args) {
+        SpringApplication.run(App.class);
+    }
+
+    @Override
+    public void run(String... strings) throws Exception {
+
+        repository.save(new User("asmolik@lol", "Olek", "Sm"));
+        repository.save(new User("elo@lol", "Elo", "Ziomek"));
+
+        for (User user : repository.findAll()) {
+            System.out.println(user);
+        }
+        for (User user : repository.findByMail("asmolik@lol")) {
+            System.out.println(user);
+        }
+    }
 }
