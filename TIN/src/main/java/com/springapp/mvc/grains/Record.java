@@ -1,12 +1,19 @@
 package com.springapp.mvc.grains;
 
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
 import java.io.Serializable;
 
 /**
  * Created by PK on 4/3/2015.
  */
+@Entity
 public class Record implements Serializable
 {
+    @Id
+    @GeneratedValue(strategy = GenerationType.AUTO)
     private int id;
     private boolean isMA = false;
     private String nameStudent;
@@ -196,5 +203,24 @@ public class Record implements Serializable
     public void setId(int id)
     {
         this.id = id;
+    }
+
+    @Override
+    public String toString() {
+        return "Record{" +
+                "id=" + id +
+                ", isMA=" + isMA +
+                ", nameStudent='" + nameStudent + '\'' +
+                ", surnameStudent='" + surnameStudent + '\'' +
+                ", mailStudent='" + mailStudent + '\'' +
+                ", titlePL='" + titlePL + '\'' +
+                ", titleEN='" + titleEN + '\'' +
+                ", namePromoter='" + namePromoter + '\'' +
+                ", surnamePromoter='" + surnamePromoter + '\'' +
+                ", abstractPL='" + abstractPL + '\'' +
+                ", abstractEN='" + abstractEN + '\'' +
+                ", keyWordsPL='" + keyWordsPL + '\'' +
+                ", keyWordsEN='" + keyWordsEN + '\'' +
+                '}';
     }
 }

@@ -4,25 +4,21 @@ import com.springapp.mvc.grains.User;
 import com.springapp.mvc.grains.UserRepository;
 import org.junit.Test;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.boot.SpringApplication;
+import org.springframework.stereotype.Component;
 
 /**
  * @author asmolik
  */
+@Component
 public class dbTest {
 
 
     @Autowired
     UserRepository repository;
 
-
     @Test
     public void test()
     {
-        SpringApplication.run(dbTest.class);
-    }
-
-    public void run() throws Exception {
         repository.save(new User("asmolik@lol", "Olek", "Sm"));
         repository.save(new User("elo@lol", "Elo", "Ziomek"));
 
@@ -32,6 +28,5 @@ public class dbTest {
         for (User user : repository.findByMail("asmolik@lol")) {
             System.out.println(user);
         }
-
     }
 }

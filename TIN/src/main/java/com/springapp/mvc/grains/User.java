@@ -1,21 +1,22 @@
 package com.springapp.mvc.grains;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
+import javax.persistence.*;
 
 /**
  * @author asmolik
  */
 @Entity
+@Table(name = "users")
 public class User
 {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private long id;
+    @Column(name = "mail", nullable = false)
     private String mail;
+    @Column(name = "name")
     private String name;
+    @Column(name = "surname")
     private String surname;
 
     public User(String mail, String name, String surname) {
