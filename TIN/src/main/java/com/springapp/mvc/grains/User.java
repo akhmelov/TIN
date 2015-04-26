@@ -1,6 +1,7 @@
 package com.springapp.mvc.grains;
 
 import javax.persistence.*;
+import java.util.List;
 
 /**
  * @author asmolik
@@ -12,17 +13,39 @@ public class User
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private long id;
-    @Column(name = "mail", nullable = false)
+    @Column(nullable = false, unique = true)
     private String mail;
-    @Column(name = "name")
+    @Column
     private String name;
-    @Column(name = "surname")
+    @Column
     private String surname;
+
+    @OneToMany(fetch = FetchType.LAZY, cascade = CascadeType.ALL, mappedBy = "user")
+    private List<Basket> baskets;
+
+
+    protected User() {}
 
     public User(String mail, String name, String surname) {
         this.mail = mail;
         this.name = name;
         this.surname = surname;
+    }
+
+    public User(String mail, String name, String surname, List<Basket> baskets) {
+        this.mail = mail;
+        this.name = name;
+        this.surname = surname;
+        this.baskets = baskets;
+    }
+
+    public void addBasket(Basket basket) {
+        basket.setUser(this);
+        baskets.add(basket);
+    }
+
+    public List<Basket> getBaskets() {
+        return baskets;
     }
 
     @Override

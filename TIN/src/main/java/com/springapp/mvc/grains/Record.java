@@ -1,32 +1,46 @@
 package com.springapp.mvc.grains;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
+import javax.persistence.*;
 import java.io.Serializable;
 
 /**
  * Created by PK on 4/3/2015.
  */
 @Entity
+@Table(name = "records")
 public class Record implements Serializable
 {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private int id;
+    @Column(nullable = false)
     private boolean isMA = false;
+    @Column
     private String nameStudent;
+    @Column
     private String surnameStudent;
+    @Column
     private String mailStudent;
+    @Column
     private String titlePL;
+    @Column
     private String titleEN;
+    @Column
     private String namePromoter;
+    @Column
     private String surnamePromoter;
+    @Column
     private String abstractPL;
+    @Column
     private String abstractEN;
+    @Column
     private String keyWordsPL;
+    @Column
     private String keyWordsEN;
+
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "basket_id")
+    private Basket basket;
 
     @Override
     public boolean equals(Object o)

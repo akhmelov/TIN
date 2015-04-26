@@ -6,6 +6,7 @@ import org.springframework.data.annotation.LastModifiedDate;
 import javax.persistence.*;
 import java.io.Serializable;
 import java.util.Date;
+import java.util.List;
 
 /**
  * Created by PK on 4/19/2015.
@@ -16,22 +17,49 @@ public class Basket implements Serializable
 {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
-    int id;
+    long id;
+    @Column
     String name;
+    @Column
     @CreatedDate
     Date dateCreate;
+    @Column
     @LastModifiedDate
     Date dateEdit;
     int contain;
 
+    @ManyToOne(fetch = FetchType.EAGER)
+    @JoinColumn(name = "user_id")
+    private User user;
+
+    @OneToMany(fetch = FetchType.LAZY, cascade = CascadeType.ALL, mappedBy = "basket")
+    List<Record> records;
+
+
     public Basket() {}
 
-    public Basket(String name, Date dateCreate, Date dateEdit) {
+    public Basket(String name, User user) {
+        this.name = name;
+        this.dateCreate = new Date();
+        this.dateEdit = new Date();
+        this.user = user;
+    }
+
+    public Basket(String name, Date dateCreate, Date dateEdit, User user) {
         this.name = name;
         this.dateCreate = dateCreate;
         this.dateEdit = dateEdit;
+        this.user = user;
     }
 
+
+    public void setUser(User owner) {
+        this.user = owner;
+    }
+
+    public User getUser(){
+        return user;
+    }
 
     public int getContain()
     {
@@ -73,12 +101,12 @@ public class Basket implements Serializable
         this.name = name;
     }
 
-    public int getId()
+    public long getId()
     {
         return id;
     }
 
-    public void setId(int id)
+    public void setId(long id)
     {
         this.id = id;
     }
@@ -90,6 +118,7 @@ public class Basket implements Serializable
                 ", name='" + name + '\'' +
                 ", dateCreate=" + dateCreate +
                 ", dateEdit=" + dateEdit +
+                ", user=" + user.getId() +
                 '}';
     }
 }

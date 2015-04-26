@@ -4,6 +4,7 @@ import com.zaxxer.hikari.HikariConfig;
 import com.zaxxer.hikari.HikariDataSource;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
+import org.springframework.context.annotation.PropertySource;
 import org.springframework.core.env.Environment;
 import org.springframework.data.jpa.repository.config.EnableJpaRepositories;
 import org.springframework.orm.jpa.JpaTransactionManager;
@@ -21,13 +22,14 @@ import java.util.Properties;
 @Configuration
 @EnableJpaRepositories(basePackages = "com.springapp.mvc.grains")
 @EnableTransactionManagement
+@PropertySource("classpath:application.properties")
 public class PersistenceContext
 {
     @Bean(destroyMethod = "close")
     DataSource dataSource(Environment env) {
         HikariConfig dataSourceConfig = new HikariConfig();
+        dataSourceConfig.setJdbcUrl(env.getRequiredProperty("spring.datasource.url"));
         dataSourceConfig.setDriverClassName(env.getRequiredProperty("spring.datasource.driverClassName"));
-        dataSourceConfig.setJdbcUrl("spring.datasource.url");
         dataSourceConfig.setUsername(env.getRequiredProperty("spring.datasource.username"));
         dataSourceConfig.setPassword(env.getRequiredProperty("spring.datasource.password"));
 
@@ -44,6 +46,8 @@ public class PersistenceContext
         Properties jpaProperties = new Properties();
         jpaProperties.put("hibernate.dialect", env.getRequiredProperty("hibernate.dialect"));
         jpaProperties.put("hibernate.hbm2ddl.auto", env.getRequiredProperty("hibernate.hbm2ddl.auto"));
+        jpaProperties.put("hibernate.show_sql", env.getRequiredProperty("hibernate.show_sql"));
+        jpaProperties.put("hibernate.format_sql", env.getRequiredProperty("hibernate.format_sql"));
 
         entityManagerFactoryBean.setJpaProperties(jpaProperties);
         return entityManagerFactoryBean;
