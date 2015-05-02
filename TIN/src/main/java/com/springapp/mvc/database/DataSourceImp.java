@@ -4,6 +4,7 @@ import com.springapp.mvc.grains.*;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
+import java.util.ArrayList;
 import java.util.List;
 
 /**
@@ -14,6 +15,7 @@ public class DataSourceImp implements DataSource
 {
     @Autowired
     UserRepository userRepository;
+
     @Autowired
     BasketRepository basketRepository;
     @Autowired
@@ -25,8 +27,25 @@ public class DataSourceImp implements DataSource
     }
 
     @Override
+    public User getUser(long id) {
+        return userRepository.findOne(id);
+    }
+
+    @Override
     public User saveUser(User user) {
         return userRepository.save(user);
+    }
+
+    @Override
+    public List<Basket> getBaskets(long idUser) {
+        List<Basket> list;
+        User user = userRepository.findOne(idUser);
+        if (user == null) {
+            list = new ArrayList<>();
+        } else {
+            list = basketRepository.findByUser(user);
+        }
+        return list;
     }
 
     @Override
@@ -45,8 +64,19 @@ public class DataSourceImp implements DataSource
     }
 
     @Override
+    public void deleteBasket(long idUser, long idBasket) {
+        Basket basket = basketRepository.findOne(idBasket);
+        basketRepository.delete(basket);
+    }
+
+    @Override
     public Record getRecordById(long id) {
         return recordRepository.findOne(id);
+    }
+
+    @Override
+    public Record getRecord(long idUser, long idBasket, long idRecord) {
+        return recordRepository.findOne(idRecord);
     }
 
     @Override
@@ -55,7 +85,36 @@ public class DataSourceImp implements DataSource
     }
 
     @Override
+    public List<Record> getRecordsByBasket(long idBasket) {
+        List<Record> list;
+        Basket basket = basketRepository.findOne(idBasket);
+        if (basket == null) {
+            list = new ArrayList<>();
+        } else {
+            list = recordRepository.findByBasket(basket);
+        }
+        return list;
+    }
+
+    @Override
+    public List<Record> getRecordsByBasket(long idUser, long idBasket) {
+        List<Record> list;
+        Basket basket = basketRepository.findOne(idBasket);
+        if (basket == null) {
+            list = new ArrayList<>();
+        } else {
+            list = recordRepository.findByBasket(basket);
+        }
+        return list;
+    }
+
+    @Override
     public Record saveRecord(Record record) {
+        return recordRepository.save(record);
+    }
+
+    @Override
+    public Record saveRecord(long idUser, long idBasket, Record record) {
         return recordRepository.save(record);
     }
 
@@ -65,8 +124,29 @@ public class DataSourceImp implements DataSource
     }
 
     @Override
+    public void saveRecordsByBasket(long idUser, long idBasket, List<Record> records) {
+        recordRepository.save(records);
+    }
+
+    @Override
+    public Record addNewRecord(long idUser, long idBasket, Record record) {
+        return recordRepository.save(record);
+    }
+
+    @Override
     public void deleteRecord(Record record) {
         recordRepository.delete(record);
+    }
+
+    @Override
+    public boolean deleteRecord(long idUser, long idBasket, long idRecord) {
+        Record record = recordRepository.findOne(idRecord);
+        if (record == null) {
+            return false;
+        } else {
+            recordRepository.delete(record);
+            return true;
+        }
     }
 
 }
