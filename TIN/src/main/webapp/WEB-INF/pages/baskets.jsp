@@ -11,6 +11,9 @@
     <head>
         <jsp:include page="common/head.jsp"/>
         <title>Spring MVC Form Handling</title>
+
+        <link href="<c:url value="/resources/css/baskets.css" />" rel="stylesheet">
+        <script src="<c:url value="/resources/js/baskets.js" />"></script>
     </head>
     <body>
         <div id="workspace">
@@ -29,7 +32,9 @@
                 <c:forEach var="listVar" items="${baskets}" varStatus="loop">
                     <tr>
                         <td><c:out value="${listVar.id}"/></td>
-                        <td><c:out value="${listVar.name}"/></td>
+                        <td>
+                            <a href="basket?idBasket=${listVar.id}"><c:out value="${listVar.name}"/></a>
+                        </td>
                         <td><c:out value="${listVar.dateCreate}"/></td>
                         <td><c:out value="${listVar.dateEdit}"/></td>
                         <td><c:out value="${listVar.contain}"/></td>
@@ -41,19 +46,6 @@
                         </td>
                     </tr>
                 </c:forEach>
-                <tr>
-                    <td>1</td>
-                    <td>Nazwa</td>
-                    <td>2015-04-10 21:48</td>
-                    <td>2015-04-10 21:48</td>
-                    <td>5</td>
-                    <td>
-                        <span class="glyphicon glyphicon-pencil" aria-hidden="true"></span>
-                    </td>
-                    <td>
-                        <span class="glyphicon glyphicon-trash" aria-hidden="true"></span>
-                    </td>
-                </tr>
             </table>
             <button type="button" id="add" class="btn btn-success">Add</button>
         </div>

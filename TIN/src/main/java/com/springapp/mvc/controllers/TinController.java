@@ -83,6 +83,7 @@ public class TinController
         String basketName = request.getParameter(App.NAME_NEW_BASKET_PARAMETER);
         User user = database.getUser(session.getId());
         Basket basket = new Basket(basketName, user);
+        database.addBasket(basket);
         return "redirect:" + App.BASKETS;
     }
 

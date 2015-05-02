@@ -12,12 +12,12 @@
         <div class="row">
             <div class="col-lg-6">
                 <div class="input-group">
-					      		<span class="input-group-addon">
-					        		Inzynierska<input type="radio" aria-label="...">
-					      		</span>
-					      		<span class="input-group-addon">
-					        		Magisterska<input type="radio" aria-label="...">
-					      		</span>
+                                <span class="input-group-addon">
+                                    Inzynierska<input type="radio" aria-label="...">
+                                </span>
+                                <span class="input-group-addon">
+                                    Magisterska<input type="radio" aria-label="...">
+                                </span>
                 </div><!-- /input-group -->
             </div><!-- /.col-lg-6 -->
         </div><!-- /.row -->
@@ -53,9 +53,9 @@
         <div class="row">
             <div class="col-lg-8">
                 <div class="input-group input-group-sm">
-						      <span class="input-group-addon">
-						      	Tytul pracy PL
-						      </span>
+                              <span class="input-group-addon">
+                                Tytul pracy PL
+                              </span>
                     <input type="text" id="titleEssayPL" class="form-control" aria-label="..." placeholder="Tytul">
                 </div><!-- /input-group -->
             </div><!-- /.col-lg-6 -->
@@ -64,9 +64,9 @@
         <div class="row">
             <div class="col-lg-8">
                 <div class="input-group input-group-sm">
-						      <span class="input-group-addon">
-						      	Tytul pracy EN
-						      </span>
+                              <span class="input-group-addon">
+                                Tytul pracy EN
+                              </span>
                     <input type="text" id="titleEssayEN" class="form-control" aria-label="..." placeholder="Tytul">
                 </div><!-- /input-group -->
             </div><!-- /.col-lg-6 -->
