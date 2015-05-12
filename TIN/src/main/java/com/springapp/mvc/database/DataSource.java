@@ -19,7 +19,7 @@ public interface DataSource
 
     public List<Basket> getBaskets(long idUser);
     public List<Basket> getBasketsByUser(User user);
-    public Basket addBasket(Basket basket);
+    public Basket saveBasket(Basket basket);
     public void deleteBasket(Basket basket);
     public void deleteBasket(long idUser, long idBasket);
 

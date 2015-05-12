@@ -12,7 +12,7 @@ public class Record implements Serializable
 {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
-    private int id;
+    private Integer id;
     @Column(nullable = false)
     private boolean isMA = false;
     @Column
@@ -38,7 +38,7 @@ public class Record implements Serializable
     @Column
     private String keyWordsEN;
 
-    @ManyToOne(fetch = FetchType.LAZY)
+    @ManyToOne(fetch = FetchType.EAGER)
     @JoinColumn(name = "basket_id")
     private Basket basket;
 
@@ -50,7 +50,7 @@ public class Record implements Serializable
 
         Record record = (Record) o;
 
-        if (id != record.id) return false;
+        if (!id.equals(record.id)) return false;
         if (isMA != record.isMA) return false;
         if (abstractEN != null ? !abstractEN.equals(record.abstractEN) : record.abstractEN != null) return false;
         if (abstractPL != null ? !abstractPL.equals(record.abstractPL) : record.abstractPL != null) return false;
@@ -217,6 +217,14 @@ public class Record implements Serializable
     public void setId(int id)
     {
         this.id = id;
+    }
+
+    public Basket getBasket() {
+        return basket;
+    }
+
+    public void setBasket(Basket basket) {
+        this.basket = basket;
     }
 
     @Override

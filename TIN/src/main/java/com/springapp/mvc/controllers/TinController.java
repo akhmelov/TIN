@@ -1,7 +1,6 @@
 package com.springapp.mvc.controllers;
 
 import com.springapp.mvc.App;
-import com.springapp.mvc.database.DataSource;
 import com.springapp.mvc.database.DataSourceImp;
 import com.springapp.mvc.forms.SingInForm;
 import com.springapp.mvc.grains.Basket;
@@ -81,9 +80,10 @@ public class TinController
     public String addNewBasket(HttpServletRequest request)
     {
         String basketName = request.getParameter(App.NAME_NEW_BASKET_PARAMETER);
-        User user = database.getUser(session.getId());
+//        User user = database.getUser(session.getId());
+        User user = database.getUser(0);
         Basket basket = new Basket(basketName, user);
-        database.addBasket(basket);
+        database.saveBasket(basket);
         return "redirect:" + App.BASKETS;
     }
 

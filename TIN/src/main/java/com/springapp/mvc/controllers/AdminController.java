@@ -39,7 +39,7 @@
 //    {
 //        String basketName = request.getParameter(App.NAME_NEW_BASKET_PARAMETER);
 //        Basket basket = new Basket(basketName, )
-//        database.addBasket(1, basketName);
+//        database.saveBasket(1, basketName);
 //        return "redirect:" + App.ADMIN;
 //    }
 //

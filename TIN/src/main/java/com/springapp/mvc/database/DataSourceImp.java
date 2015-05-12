@@ -15,7 +15,6 @@ public class DataSourceImp implements DataSource
 {
     @Autowired
     UserRepository userRepository;
-
     @Autowired
     BasketRepository basketRepository;
     @Autowired
@@ -54,7 +53,7 @@ public class DataSourceImp implements DataSource
     }
 
     @Override
-    public Basket addBasket(Basket basket) {
+    public Basket saveBasket(Basket basket) {
         return basketRepository.save(basket);
     }
 
@@ -66,7 +65,9 @@ public class DataSourceImp implements DataSource
     @Override
     public void deleteBasket(long idUser, long idBasket) {
         Basket basket = basketRepository.findOne(idBasket);
-        basketRepository.delete(basket);
+        if (basket != null) {
+            basketRepository.delete(basket);
+        }
     }
 
     @Override
@@ -115,7 +116,12 @@ public class DataSourceImp implements DataSource
 
     @Override
     public Record saveRecord(long idUser, long idBasket, Record record) {
-        return recordRepository.save(record);
+        Basket basket = basketRepository.findOne(idBasket);
+        if (basket != null) {
+            record.setBasket(basket);
+            return recordRepository.save(record);
+        }
+        return null;
     }
 
     @Override
@@ -125,12 +131,23 @@ public class DataSourceImp implements DataSource
 
     @Override
     public void saveRecordsByBasket(long idUser, long idBasket, List<Record> records) {
-        recordRepository.save(records);
+        Basket basket = basketRepository.findOne(idBasket);
+        if (basket != null) {
+            for (Record record : records) {
+                record.setBasket(basket);
+            }
+            recordRepository.save(records);
+        }
     }
 
     @Override
     public Record addNewRecord(long idUser, long idBasket, Record record) {
-        return recordRepository.save(record);
+        Basket basket = basketRepository.findOne(idBasket);
+        if (basket != null) {
+            record.setBasket(basket);
+            return recordRepository.save(record);
+        }
+        return null;
     }
 
     @Override

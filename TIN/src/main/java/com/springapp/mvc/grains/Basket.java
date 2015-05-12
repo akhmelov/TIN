@@ -17,7 +17,7 @@ public class Basket implements Serializable
 {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
-    long id;
+    Long id;
     @Column
     String name;
     @Column
@@ -101,7 +101,7 @@ public class Basket implements Serializable
         this.name = name;
     }
 
-    public long getId()
+    public Long getId()
     {
         return id;
     }
