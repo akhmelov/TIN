@@ -37,6 +37,8 @@ public class Record implements Serializable
     private String keyWordsPL;
     @Column
     private String keyWordsEN;
+    @Column
+    private String issueDate;
 
     @ManyToOne(fetch = FetchType.EAGER)
     @JoinColumn(name = "basket_id")
@@ -199,6 +201,16 @@ public class Record implements Serializable
         this.nameStudent = nameStudent;
     }
 
+    public String getIssueDate()
+    {
+        return issueDate;
+    }
+
+    public void setIssueDate(String issueDate)
+    {
+        this.issueDate = issueDate;
+    }
+    
     public boolean isMA()
     {
         return isMA;

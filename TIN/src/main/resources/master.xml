@@ -1,0 +1,66 @@
+<ns2:master>
+<owner>bskalska</owner>
+<affiliationowner>IN</affiliationowner>
+<author>
+<owner>bskalska</owner>
+<affiliationowner>IN</affiliationowner>
+<active>false</active>
+<status>DYPLOMANT</status>
+<name>
+Marek
+</name>
+<surname>
+Iwanejko
+</surname>
+<email>
+M.Iwanejko@elka.pw.edu.pl
+</email>
+<ns2:affiliation>
+<id>WEITI-a8a2fa13-0e5e-43f1-9c27-aeb4ee23e180</id>
+</ns2:affiliation>
+</author>
+<titlePL>
+System zarzadzania siecia wykorzystujacy protokol SNMP i interfejs WWW
+</titlePL>
+<titleEN>
+SNMP-based network management system with a Web based interface
+</titleEN>
+<supervisor>
+<name>
+Grzegorz
+</name>
+<surname>
+Blinowski
+</surname>
+</supervisor>
+<certifyingUnit>
+<id>WEITI-aca13175-86da-4e95-bb44-9e831ef22360</id>
+</certifyingUnit>
+<affiliationUnit>
+<id>WEITI-a8a2fa13-0e5e-43f1-9c27-aeb4ee23e180</id>
+</affiliationUnit>
+<ns2:language>
+<code>PL</code>
+</ns2:language>
+<status>finished</status>
+<mark>mark_placeholder</mark>
+<honored>honored_placeholder</honored>
+<issueDate>
+2002
+</issueDate>
+<abstractPL>
+Glownym celem pracy byla implementacja oprogramowania NetGuard, sluzacego
+do .
+</abstractPL>
+<abstractEN>
+The main purpose of this work was to implement NetGuard sofiware, which
+ ...</abstractEN>
+<keywordsPL>
+SNMP, system zarzadzania, bezpieczenstwo sieci, sledzenie adresow MAC, monitorowanie
+on-line, WWW,CGI
+</keywordsPL>
+<keywordsEN>
+SNMP, network management, network security, MAC trracing, on-line monitoring,
+WWW, CGI
+</keywordsEN>
+</ns2:master>
