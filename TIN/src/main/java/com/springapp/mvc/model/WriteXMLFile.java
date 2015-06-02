@@ -19,8 +19,7 @@ import org.xml.sax.SAXException;
  
 public class WriteXMLFile {
 
-	public static void create(Record r,String fname) {
- 	   if 
+	public static void create(Record r,String filename)
 	   try {
 		String filepath = r.isMa()?'resources\master.xml':'resources\bachelor.xml';
 		DocumentBuilderFactory docFactory = DocumentBuilderFactory.newInstance();
@@ -76,7 +75,7 @@ public class WriteXMLFile {
 		TransformerFactory transformerFactory = TransformerFactory.newInstance();
 		Transformer transformer = transformerFactory.newTransformer();
 		DOMSource source = new DOMSource(doc);
-		StreamResult result = new StreamResult(new File(r.isMa()?'resources\Mdownload.xml':'resources\Bdownload.xml'));
+		StreamResult result = new StreamResult(new FileWriter('resources/'+filename+'.xml',true));
 		transformer.transform(source, result);
  
 		System.out.println("Done");
