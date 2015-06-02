@@ -174,6 +174,7 @@ public class TinController
         String ret = "Records";
         for(Record rec: records){
             ret += rec.toString();
+            //TODO Jan tu zaimplementuj "ret += funckcja(rec)" dla prac inżynierskich
         }
         return ret;
     }
@@ -185,6 +186,7 @@ public class TinController
         String ret = "Records";
         for(Record rec: records){
             ret += rec.toString();
+            //TODO Jan tu zaimplementuj "ret += funckcja(rec)" dla prac magisterskich
         }
         return ret;
     }
