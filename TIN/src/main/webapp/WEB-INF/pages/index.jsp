@@ -3,6 +3,7 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <html>
 <body>
+    <jsp:include page="common/headerPanel.jsp" />
     <h2>
         Prosze sie zalogowac
     </h2>

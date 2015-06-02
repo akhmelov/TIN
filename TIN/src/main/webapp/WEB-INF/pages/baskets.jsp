@@ -16,6 +16,7 @@
         <script src="<c:url value="/resources/js/baskets.js" />"></script>
     </head>
     <body>
+        <jsp:include page="common/headerPanel.jsp" />
         <div id="workspace">
             <h2>Submitted Student Information</h2>
             <!-- Table -->

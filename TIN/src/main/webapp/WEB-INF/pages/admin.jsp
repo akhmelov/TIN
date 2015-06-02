@@ -1,16 +1,54 @@
+<%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%--
   Created by IntelliJ IDEA.
-  User: PK
-  Date: 4/8/2015
-  Time: 11:33 PM
+  User: Sasha
+  Date: 3/19/2015
+  Time: 10:50 PM
   To change this template use File | Settings | File Templates.
 --%>
-<%@ page contentType="text/html;charset=UTF-8" language="java" %>
+<%@taglib uri="http://www.springframework.org/tags/form" prefix="form"%>
 <html>
 <head>
-    <title>Admin</title>
+    <jsp:include page="common/head.jsp"/>
+    <title>Spring MVC Form Handling</title>
+
+    <link href="<c:url value="/resources/css/admin.css" />" rel="stylesheet">
+    <script src="<c:url value="/resources/js/admin.js" />"></script>
 </head>
 <body>
-    <h1>Test ADMIN</h1>
+<div id="workspace">
+    <jsp:include page="common/headerPanel.jsp" />
+    <h2>Submitted Student Information</h2>
+    <!-- Table -->
+    <table class="table table-striped">
+        <tr>
+            <th>Index</th>
+            <th>Mail</th>
+            <th>Surname</th>
+            <th>Name</th>
+            <th>Position</th>
+            <th></th>
+            <th></th>
+        </tr>
+        <c:forEach var="listVar" items="${users}" varStatus="loop">
+            <tr>
+                <td><c:out value="${listVar.id}"/></td>
+                <td>
+                    <a href="basket?idBasket=${listVar.id}"><c:out value="${listVar.mail}"/></a>
+                </td>
+                <td><c:out value="${listVar.surname}"/></td>
+                <td><c:out value="${listVar.name}"/></td>
+                <td><c:out value=""/>test</td>
+                <td>
+                    <span id="<c:out value="${listVar.id}"/>" class="glyphicon glyphicon-pencil" aria-hidden="true"></span>
+                </td>
+                <td>
+                    <span id="<c:out value="${listVar.id}"/>" class="glyphicon glyphicon-trash" onclick="deleteBasket(${listVar.id})" aria-hidden="true"></span>
+                </td>
+            </tr>
+        </c:forEach>
+    </table>
+    <button type="button" id="add" class="btn btn-success">Add</button>
+</div>
 </body>
 </html>

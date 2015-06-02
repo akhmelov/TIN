@@ -14,6 +14,7 @@ import java.util.List;
 public interface DataSource
 {
     public List<User> getUserByMail(String mail);
+    public List<User> getUsers();
     public User getUser(long id);
     public User saveUser(User user);
 

@@ -26,6 +26,8 @@ public class App
     public static final String ADD_USER = "addBasket";
     public static final String DELETE_USER = "deleteBasket";
     public static final String EDIT_USER = "editBasket";
+    public static final String GENERATE_XML_INZ = "generateXMLInz";
+    public static final String GENERATE_XML_MGR = "generateXMLMgr";
 
 
     public static final String PIK_CONTROLLER_URL = "/pik/";

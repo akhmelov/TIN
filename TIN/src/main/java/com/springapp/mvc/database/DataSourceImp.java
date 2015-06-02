@@ -1,10 +1,14 @@
 package com.springapp.mvc.database;
 
+import com.google.common.collect.Lists;
 import com.springapp.mvc.grains.*;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
+import javax.swing.*;
 import java.util.ArrayList;
+import java.util.Iterator;
+import java.util.LinkedList;
 import java.util.List;
 
 /**
@@ -19,6 +23,12 @@ public class DataSourceImp implements DataSource
     BasketRepository basketRepository;
     @Autowired
     RecordRepository recordRepository;
+
+    @Override
+    public List<User> getUsers() {
+        List<User> list = Lists.newArrayList(userRepository.findAll());
+        return list;
+    }
 
     @Override
     public List<User> getUserByMail(String mail) {
@@ -145,7 +155,8 @@ public class DataSourceImp implements DataSource
         Basket basket = basketRepository.findOne(idBasket);
         if (basket != null) {
             record.setBasket(basket);
-            return recordRepository.save(record);
+            record = recordRepository.save(record);
+            return record;
         }
         return null;
     }
