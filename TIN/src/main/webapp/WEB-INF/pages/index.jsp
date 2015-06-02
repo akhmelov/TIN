@@ -3,6 +3,7 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <html>
 <body>
+    <jsp:include page="common/headerPanel.jsp" />
     <h2>
         Prosze sie zalogowac
     </h2>
@@ -20,15 +21,15 @@
                 <td><label>Stay in:<label></td>
                 <td><form:checkbox path="staySigned" value="false"/></td>
             </tr>
-            <tr>
-                <td><label>Please select who you are: </label></td>
-                <td>
-                    <form:select path="Who">
-                        <form:option value="" label="..." />
-                        <form:options items="${who}" />
-                    </form:select>
-                </td>
-            </tr>
+            <%--<tr>--%>
+                <%--<td><label>Please select who you are: </label></td>--%>
+                <%--<td>--%>
+                    <%--<form:select path="Who">--%>
+                        <%--<form:option value="" label="..." />--%>
+                        <%--<form:options items="${who}" />--%>
+                    <%--</form:select>--%>
+                <%--</td>--%>
+            <%--</tr>--%>
             <td colspan="2">
                 <input type="submit" value="Submit"/>
             </td>

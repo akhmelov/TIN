@@ -16,6 +16,7 @@
         <script src="<c:url value="/resources/js/baskets.js" />"></script>
     </head>
     <body>
+        <jsp:include page="common/headerPanel.jsp" />
         <div id="workspace">
             <h2>Submitted Student Information</h2>
             <!-- Table -->
@@ -39,7 +40,7 @@
                         <td><c:out value="${listVar.dateEdit}"/></td>
                         <td><c:out value="${listVar.contain}"/></td>
                         <td>
-                            <span id="<c:out value="${listVar.id}"/>" class="glyphicon glyphicon-pencil" aria-hidden="true"></span>
+                            <span id="<c:out value="${listVar.id}"/>" class="glyphicon glyphicon-pencil" onclick="editBasket(${listVar.id})" aria-hidden="true"></span>
                         </td>
                         <td>
                             <span id="<c:out value="${listVar.id}"/>" class="glyphicon glyphicon-trash" onclick="deleteBasket(${listVar.id})" aria-hidden="true"></span>

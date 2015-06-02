@@ -381,7 +381,12 @@ function generateXML(){
         }
     }
     var link = document.createElement("a");
-    link.download = "data:text/html,HelloWorld!";
-    link.href = "helloWorld.txt";
+    link.download = "data:XML_inzynierskie";
+    link.href = "generateXMLInz?idBasket=" + $("body").attr("id");
     link.click();
+
+    var linkMgr = document.createElement("a");
+    linkMgr.download = "data:XML_magisterskie";
+    linkMgr.href = "generateXMLMgr?idBasket=" + $("body").attr("id");
+    linkMgr.click();
 }

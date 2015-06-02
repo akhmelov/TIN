@@ -14,6 +14,7 @@ import java.util.List;
 public interface DataSource
 {
     public List<User> getUserByMail(String mail);
+    public List<User> getUsers();
     public User getUser(long id);
     public User saveUser(User user);
 
@@ -22,7 +23,9 @@ public interface DataSource
     public Basket saveBasket(Basket basket);
     public void deleteBasket(Basket basket);
     public void deleteBasket(long idUser, long idBasket);
+    public void deleteUser(User user);
 
+    public Basket getBasketById(long id);
     public Record getRecordById(long id);
     public Record getRecord(long idUser, long idBasket, long idRecord);
 

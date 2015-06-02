@@ -1,5 +1,7 @@
 package com.springapp.mvc.grains;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 import javax.persistence.*;
 import java.io.Serializable;
 
@@ -12,7 +14,7 @@ public class Record implements Serializable
 {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
-    private Integer id;
+    Long id;
     @Column(nullable = false)
     private boolean isMA = false;
     @Column
@@ -40,6 +42,7 @@ public class Record implements Serializable
     @Column
     private String issueDate;
 
+    @JsonIgnore
     @ManyToOne(fetch = FetchType.EAGER)
     @JoinColumn(name = "basket_id")
     private Basket basket;
@@ -75,7 +78,7 @@ public class Record implements Serializable
     @Override
     public int hashCode()
     {
-        int result = id;
+        int result = (int)(long)id;
         result = 31 * result + (isMA ? 1 : 0);
         result = 31 * result + (nameStudent != null ? nameStudent.hashCode() : 0);
         result = 31 * result + (surnameStudent != null ? surnameStudent.hashCode() : 0);
@@ -221,12 +224,12 @@ public class Record implements Serializable
         this.isMA = isMA;
     }
 
-    public int getId()
+    public Long getId()
     {
         return id;
     }
 
-    public void setId(int id)
+    public void setId(Long id)
     {
         this.id = id;
     }

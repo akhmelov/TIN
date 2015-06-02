@@ -36,6 +36,10 @@ public class TinController
     @RequestMapping(method = RequestMethod.GET)
     public ModelAndView home(ModelMap modelMap)
     {
+//        User olek = new User("asmolik@lol", "Olek", "Sm");
+//        database.saveUser(olek);
+//
+//        session.setId(1);
         ModelAndView modelAndView = new ModelAndView(App.HOME);
         modelAndView.addObject("singInForm", new SingInForm());
         return modelAndView;
@@ -45,12 +49,17 @@ public class TinController
     public String homePost(@ModelAttribute("SpringWeb") SingInForm singInForm)
     {   //TODO
         ModelAndView modelAndView = new ModelAndView();
+        if(singInForm.getUsername().equals(App.ADMIN_USERNAME) && singInForm.getPassword().equals(App.ADMIN_PASSWORD)){
+            singInForm.setWho(SingInForm.Who.Admin);
+        }
         switch (singInForm.getWho())
         {
             case Promoter:
+                User user = database.getUserByMail(singInForm.getUsername()).get(0);
+                session.setId(user.getId());
                 return "redirect:" + App.BASKETS;
             case Admin:
-                return "redirect:../" + App.ADMIN_CONSTROLLER_URL + App.ADMIN;
+                return "redirect:.." + App.ADMIN_CONSTROLLER_URL + App.ADMIN;
             default:
                 return "redirect:" + App.BASKETS;
         }
@@ -61,7 +70,7 @@ public class TinController
     {
         ModelAndView modelAndView = new ModelAndView();
         modelAndView.setViewName(App.BASKETS);
-        modelAndView.addObject("baskets", database.getBaskets(1));
+        modelAndView.addObject("baskets", database.getBaskets(session.getId()));
         return  modelAndView;
     }
 
@@ -80,8 +89,8 @@ public class TinController
     public String addNewBasket(HttpServletRequest request)
     {
         String basketName = request.getParameter(App.NAME_NEW_BASKET_PARAMETER);
-//        User user = database.getUser(session.getId());
-        User user = database.getUser(0);
+        User user = database.getUser(session.getId());
+//        User user = database.getUser(1);
         Basket basket = new Basket(basketName, user);
         database.saveBasket(basket);
         return "redirect:" + App.BASKETS;
@@ -92,7 +101,7 @@ public class TinController
     {
         String idBasket = request.getParameter(App.ID_EXIST_BASKET_PARAMETER);
         int id = Integer.valueOf(idBasket);
-        database.deleteBasket(1, id);
+        database.deleteBasket(session.getId(), id);
         return "redirect:" + App.BASKETS;
     }
 
@@ -102,14 +111,16 @@ public class TinController
         String idBasket = request.getParameter(App.ID_EXIST_BASKET_PARAMETER);
         String newBasketName = request.getParameter(App.NAME_NEW_BASKET_PARAMETER);
         int id = Integer.valueOf(idBasket);
-        database.deleteBasket(1, id);
+        Basket basket = database.getBasketById(id);
+        basket.setName(newBasketName);
+        database.saveBasket(basket);
         return "redirect:" + App.BASKETS;
     }
 
     @RequestMapping(value = App.GET_RECORDS_JSON, method = RequestMethod.POST)
     public @ResponseBody List<Record> getRecords(@RequestParam(value = "" + App.ID_EXIST_BASKET_PARAMETER) Integer idBasket)
     {
-        List<Record> tmp = database.getRecordsByBasket(1, idBasket);
+        List<Record> tmp = database.getRecordsByBasket(session.getId(), idBasket);
         return tmp;
     }
 
@@ -118,7 +129,7 @@ public class TinController
     {
         //TODO
         List<Record> list = new ArrayList<>();
-        database.saveRecordsByBasket(1, 1, list);
+        database.saveRecordsByBasket(session.getId(), 1, list);
         ModelAndView modelAndView = new ModelAndView("basket");
         return modelAndView;
     }
@@ -127,16 +138,14 @@ public class TinController
     public @ResponseBody Integer addRecord(@RequestParam(value = "" + App.ID_EXIST_BASKET_PARAMETER) Integer idBasket)
     {
         Record record = new Record();
-        return database.addNewRecord(1, idBasket, record).getId();
+        return (int)(long)database.addNewRecord(session.getId(), idBasket, record).getId();
     }
 
     @RequestMapping(value = App.GET_RECORD, method = RequestMethod.POST)
     public @ResponseBody Record getRecords(@RequestParam(value = "" + App.ID_EXIST_BASKET_PARAMETER) Integer idBasket,
                                            @RequestParam(value = "" + App.ID_EXIST_RECORD_PARAMETER) Integer idRecord)
     {
-        Record record = database.getRecord(1, idBasket, idRecord);
-        record.setNameStudent("" + idRecord); //TODO delete this line, set database
-        record.setSurnameStudent("" + idBasket); //TODO delete this line, set database
+        Record record = database.getRecord(session.getId(), idBasket, idRecord);
         return record;
     }
 
@@ -145,7 +154,7 @@ public class TinController
     {
         int idBasket = Integer.valueOf(request.getParameter(App.ID_EXIST_BASKET_PARAMETER));
         int idRecord = Integer.valueOf(request.getParameter(App.ID_EXIST_RECORD_PARAMETER));
-        if(database.deleteRecord(1, idBasket, idRecord))
+        if(database.deleteRecord(session.getId(), idBasket, idRecord))
             return new Boolean(true);
         return new Boolean(true);
     }
@@ -153,17 +162,32 @@ public class TinController
     @RequestMapping(value = App.SAVE_RECORD, method = RequestMethod.POST)
     public @ResponseBody Boolean saveRecord(@RequestParam("idBasket") Integer idBasket,@RequestBody Record record)
     {
-        //TODO
-        if(database.saveRecord(1, idBasket, record) != null)
+        if(database.saveRecord(session.getId(), idBasket, record) != null)
             return new Boolean(true);
         return new Boolean(false);
     }
 
-    @RequestMapping(value = "/generateXML", method = RequestMethod.POST, consumes = "application/json")
-    public @ResponseBody String generateXML()
+    @RequestMapping(value = App.GENERATE_XML_INZ)
+    public @ResponseBody String generateXMLInz(@RequestParam("idBasket") Integer idBasket)
     {
-        //TODO
-        String ret = "Hello";
+        List<Record> records = database.getRecordsByBasket(idBasket);
+        String ret = "Records";
+        for(Record rec: records){
+            ret += rec.toString();
+            //TODO Jan tu zaimplementuj "ret += funckcja(rec)" dla prac inżynierskich
+        }
+        return ret;
+    }
+
+    @RequestMapping(value = App.GENERATE_XML_MGR)
+    public @ResponseBody String generateXMLMgr(@RequestParam("idBasket") Integer idBasket)
+    {
+        List<Record> records = database.getRecordsByBasket(idBasket);
+        String ret = "Records";
+        for(Record rec: records){
+            ret += rec.toString();
+            //TODO Jan tu zaimplementuj "ret += funckcja(rec)" dla prac magisterskich
+        }
         return ret;
     }
 }

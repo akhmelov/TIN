@@ -5,9 +5,13 @@
 	<head>
         <jsp:include page="common/head.jsp"/>
 
+        <link href="<c:url value="/resources/css/maket.css" />" rel="stylesheet">
+        <script src="<c:url value="/resources/js/maket.js" />"></script>
+
 	  <title>My first styled page</title>
 	</head>
-	<body>
+	<body id="${idBasket}">
+        <jsp:include page="common/headerPanel.jsp" />
         <jsp:include page="tags/navPanel.jsp" />
         <div type="hidden" style="display: none;"> <!-- work space js -->
             <jsp:include page="tags/record.jsp"/>
