@@ -24,10 +24,12 @@ public class App
     public static final String GET_RECORDS_JSON = "getRecordsJson";
     public static final String ADMIN_CONSTROLLER_URL = "/admin/";
     public static final String ADD_USER = "addBasket";
-    public static final String DELETE_USER = "deleteBasket";
-    public static final String EDIT_USER = "editBasket";
+    public static final String DELETE_USER = "deleteUser";
+    public static final String EDIT_USER = "editUser";
     public static final String GENERATE_XML_INZ = "generateXMLInz";
     public static final String GENERATE_XML_MGR = "generateXMLMgr";
+    public static final String ADMIN_USERNAME = "admin";
+    public static final String ADMIN_PASSWORD = "admin";
 
 
     public static final String PIK_CONTROLLER_URL = "/pik/";

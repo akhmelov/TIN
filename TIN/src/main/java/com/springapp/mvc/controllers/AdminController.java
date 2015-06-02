@@ -52,9 +52,9 @@ public class AdminController
     @RequestMapping(value = App.DELETE_USER, method = RequestMethod.POST)
     public String deleteBasket(HttpServletRequest request)
     {
-        String idBasket = request.getParameter(App.ID_EXIST_BASKET_PARAMETER);
-        int id = Integer.valueOf(idBasket);
-        database.deleteBasket(1, id);
+        String idUser = request.getParameter(App.ID_EXIST_BASKET_PARAMETER);
+        int id = Integer.valueOf(idUser);
+        database.deleteUser(database.getUser(id));
         return "redirect:" + App.BASKETS;
     }
 

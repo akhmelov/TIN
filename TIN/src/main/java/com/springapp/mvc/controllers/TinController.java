@@ -36,10 +36,10 @@ public class TinController
     @RequestMapping(method = RequestMethod.GET)
     public ModelAndView home(ModelMap modelMap)
     {
-        User olek = new User("asmolik@lol", "Olek", "Sm");
-        database.saveUser(olek);
-
-        session.setId(1);
+//        User olek = new User("asmolik@lol", "Olek", "Sm");
+//        database.saveUser(olek);
+//
+//        session.setId(1);
         ModelAndView modelAndView = new ModelAndView(App.HOME);
         modelAndView.addObject("singInForm", new SingInForm());
         return modelAndView;
@@ -49,9 +49,14 @@ public class TinController
     public String homePost(@ModelAttribute("SpringWeb") SingInForm singInForm)
     {   //TODO
         ModelAndView modelAndView = new ModelAndView();
+        if(singInForm.getUsername().equals(App.ADMIN_USERNAME) && singInForm.getPassword().equals(App.ADMIN_PASSWORD)){
+            singInForm.setWho(SingInForm.Who.Admin);
+        }
         switch (singInForm.getWho())
         {
             case Promoter:
+                User user = database.getUserByMail(singInForm.getUsername()).get(0);
+                session.setId(user.getId());
                 return "redirect:" + App.BASKETS;
             case Admin:
                 return "redirect:.." + App.ADMIN_CONSTROLLER_URL + App.ADMIN;
@@ -106,7 +111,9 @@ public class TinController
         String idBasket = request.getParameter(App.ID_EXIST_BASKET_PARAMETER);
         String newBasketName = request.getParameter(App.NAME_NEW_BASKET_PARAMETER);
         int id = Integer.valueOf(idBasket);
-        database.deleteBasket(session.getId(), id);
+        Basket basket = database.getBasketById(id);
+        basket.setName(newBasketName);
+        database.saveBasket(basket);
         return "redirect:" + App.BASKETS;
     }
 

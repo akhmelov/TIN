@@ -23,7 +23,9 @@ public interface DataSource
     public Basket saveBasket(Basket basket);
     public void deleteBasket(Basket basket);
     public void deleteBasket(long idUser, long idBasket);
+    public void deleteUser(User user);
 
+    public Basket getBasketById(long id);
     public Record getRecordById(long id);
     public Record getRecord(long idUser, long idBasket, long idRecord);
 

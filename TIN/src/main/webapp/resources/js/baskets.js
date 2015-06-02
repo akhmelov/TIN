@@ -9,6 +9,7 @@ $( document ).ready(function() {
             return;
         } else if(x == ''){
             alert("Wpisana pusta wartosc, koszyk nie dodany");
+            return;
         }
         var form = document.createElement("form");
         form.setAttribute("method", "POST");
@@ -38,6 +39,34 @@ function deleteBasket(id){
     hiddenField.setAttribute("name", "idBasket");
     hiddenField.setAttribute("value", id);
 
+    form.appendChild(hiddenField);
+
+    document.body.appendChild(form);
+    form.submit();
+}
+
+function editBasket(id){
+    var x = prompt("Prosze wpisac nowa nazwe koszyka: ");
+    if(x == null) {
+        return;
+    } else if(x == ''){
+        alert("Wpisana pusta wartosc, koszyk nie zmieniony");
+        return;
+    }
+    var form = document.createElement("form");
+    form.setAttribute("method", "POST");
+    form.setAttribute("action", "editBasket");
+
+    var hiddenField = document.createElement("input");
+    hiddenField.setAttribute("type", "hidden");
+    hiddenField.setAttribute("name", "idBasket");
+    hiddenField.setAttribute("value", id);
+    form.appendChild(hiddenField);
+
+    hiddenField = document.createElement("input");
+    hiddenField.setAttribute("type", "hidden");
+    hiddenField.setAttribute("name", "nameBasket");
+    hiddenField.setAttribute("value", x);
     form.appendChild(hiddenField);
 
     document.body.appendChild(form);

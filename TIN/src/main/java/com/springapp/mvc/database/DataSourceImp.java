@@ -73,6 +73,16 @@ public class DataSourceImp implements DataSource
     }
 
     @Override
+    public void deleteUser(User user) {
+        userRepository.delete(user);
+    }
+
+    @Override
+    public Basket getBasketById(long id) {
+        return basketRepository.findOne(id);
+    }
+
+    @Override
     public void deleteBasket(long idUser, long idBasket) {
         Basket basket = basketRepository.findOne(idBasket);
         if (basket != null) {
