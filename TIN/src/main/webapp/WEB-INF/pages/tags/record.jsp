@@ -12,12 +12,14 @@
         <div class="row">
             <div class="col-lg-6">
                 <div class="input-group">
-                                <span class="input-group-addon">
-                                    Inzynierska<input type="radio" aria-label="...">
-                                </span>
-                                <span class="input-group-addon">
-                                    Magisterska<input type="radio" aria-label="...">
-                                </span>
+                    <form id="type">
+                        <span class="input-group-addon">
+                            Inzynierska<input type="radio" name="type" id="engineer" checked aria-label="...">
+                        </span>
+                        <span class="input-group-addon">
+                            Magisterska<input type="radio" name="type" id="magister" aria-label="...">
+                        </span>
+                    </form>
                 </div><!-- /input-group -->
             </div><!-- /.col-lg-6 -->
         </div><!-- /.row -->
