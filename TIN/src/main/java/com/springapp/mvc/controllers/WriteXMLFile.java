@@ -12,6 +12,8 @@ import javax.xml.transform.dom.DOMSource;
 import javax.xml.transform.stream.StreamResult;
 
 import com.springapp.mvc.grains.Record;
+import org.springframework.core.io.ClassPathResource;
+import org.springframework.core.io.Resource;
 import org.w3c.dom.Document;
 import org.w3c.dom.Node;
 import org.w3c.dom.NodeList;
@@ -21,10 +23,11 @@ public class WriteXMLFile {
 
 	public static String create(Record r){
 		try {
-			String filepath = r.isMA()? "master.xml" : "bachelor.xml";
+			String filename = r.isMA()? "/master.xml" : "/bachelor.xml";
+            Resource rsrc = new ClassPathResource(filename);
 			DocumentBuilderFactory docFactory = DocumentBuilderFactory.newInstance();
 			DocumentBuilder docBuilder = docFactory.newDocumentBuilder();
-			Document doc = docBuilder.parse(filepath);
+			Document doc = docBuilder.parse(rsrc.getFile().getAbsolutePath());
 
 			//Edit Title
 			Node editNode = doc.getElementsByTagName("titlePL").item(0);
