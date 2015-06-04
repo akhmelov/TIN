@@ -1,6 +1,5 @@
 package com.springapp.mvc.controllers;
 
-import java.io.File;
 import java.io.IOException;
 import java.io.StringWriter;
 import javax.xml.parsers.DocumentBuilder;
@@ -14,8 +13,6 @@ import javax.xml.transform.stream.StreamResult;
 
 import com.springapp.mvc.grains.Record;
 import org.w3c.dom.Document;
-import org.w3c.dom.Element;
-import org.w3c.dom.NamedNodeMap;
 import org.w3c.dom.Node;
 import org.w3c.dom.NodeList;
 import org.xml.sax.SAXException;
@@ -24,7 +21,7 @@ public class WriteXMLFile {
 
 	public static String create(Record r){
 		try {
-			String filepath = r.isMA()?"master.xml":"bachelor.xml";
+			String filepath = r.isMA()? "master.xml" : "bachelor.xml";
 			DocumentBuilderFactory docFactory = DocumentBuilderFactory.newInstance();
 			DocumentBuilder docBuilder = docFactory.newDocumentBuilder();
 			Document doc = docBuilder.parse(filepath);
@@ -62,7 +59,9 @@ public class WriteXMLFile {
 				}
 			}
 			// fill in promoter children
-			Node promoter = doc.getElementsByTagName("promoter").item(0);
+			Node promoter = doc.getElementsByTagName("supervisor").item(0);
+			if(promoter==null)
+				return "no supervisor tag found";
 			list = promoter.getChildNodes();
 			for (int i = 0; i < list.getLength(); i++) {
 				Node node = list.item(i);
