@@ -39,6 +39,29 @@ public class User
         this.baskets = baskets;
     }
 
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (!(o instanceof User)) return false;
+
+        User user = (User) o;
+
+        if (getId() != null ? !getId().equals(user.getId()) : user.getId() != null) return false;
+        if (getMail() != null ? !getMail().equals(user.getMail()) : user.getMail() != null) return false;
+        if (getName() != null ? !getName().equals(user.getName()) : user.getName() != null) return false;
+        return !(getSurname() != null ? !getSurname().equals(user.getSurname()) : user.getSurname() != null);
+
+    }
+
+    @Override
+    public int hashCode() {
+        int result = getId() != null ? getId().hashCode() : 0;
+        result = 31 * result + (getMail() != null ? getMail().hashCode() : 0);
+        result = 31 * result + (getName() != null ? getName().hashCode() : 0);
+        result = 31 * result + (getSurname() != null ? getSurname().hashCode() : 0);
+        return result;
+    }
+
     public void addBasket(Basket basket) {
         basket.setUser(this);
         baskets.add(basket);

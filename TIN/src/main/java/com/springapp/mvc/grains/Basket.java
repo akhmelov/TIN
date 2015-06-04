@@ -53,6 +53,27 @@ public class Basket implements Serializable
     }
 
 
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (!(o instanceof Basket)) return false;
+
+        Basket basket = (Basket) o;
+
+        if (!getId().equals(basket.getId())) return false;
+        if (!getName().equals(basket.getName())) return false;
+        return getUser().equals(basket.getUser());
+
+    }
+
+    @Override
+    public int hashCode() {
+        int result = getId().hashCode();
+        result = 31 * result + getName().hashCode();
+        result = 31 * result + getUser().hashCode();
+        return result;
+    }
+
     public void setUser(User owner) {
         this.user = owner;
     }

@@ -10,6 +10,11 @@ import org.springframework.stereotype.Component;
 @Scope("session")
 public class UserSession
 {
+    public enum Who {Promoter, Admin, None};
+
+    private Who who = Who.None;
+    private long id;
+
     public long getId() {
         return id;
     }
@@ -18,5 +23,15 @@ public class UserSession
         this.id = id;
     }
 
-    private long id;
+    public Who getWho()
+    {
+        return who;
+    }
+
+    public void setWho(Who who)
+    {
+        this.who = who;
+    }
+
+
 }

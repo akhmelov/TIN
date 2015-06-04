@@ -30,6 +30,7 @@ public class App
     public static final String GENERATE_XML_MGR = "generateXMLMgr";
     public static final String ADMIN_USERNAME = "admin";
     public static final String ADMIN_PASSWORD = "admin";
+    public static final String LOG_OUT = "logOut";
 
 
     public static final String PIK_CONTROLLER_URL = "/pik/";

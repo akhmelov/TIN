@@ -58,6 +58,15 @@ public class DataSourceImp implements DataSource
         return list;
     }
 
+    boolean hasPermissionGetBasket(long idUser, long idBasket){
+        User user = userRepository.findOne(idUser);
+        List<Basket> baskets = basketRepository.findByUser(user);
+        Basket basket = basketRepository.findOne(idBasket);
+        int index = baskets.indexOf(basket);
+        if(index < 0)
+            return false;
+        return true;
+    }
     @Override
     public List<Basket> getBasketsByUser(User user) {
         return basketRepository.findByUser(user);
@@ -85,6 +94,9 @@ public class DataSourceImp implements DataSource
 
     @Override
     public void deleteBasket(long idUser, long idBasket) {
+        if(!hasPermissionGetBasket(idUser, idBasket)){
+            return;
+        }
         Basket basket = basketRepository.findOne(idBasket);
         if (basket != null) {
             basketRepository.delete(basket);
@@ -120,6 +132,9 @@ public class DataSourceImp implements DataSource
 
     @Override
     public List<Record> getRecordsByBasket(long idUser, long idBasket) {
+        if(!hasPermissionGetBasket(idUser, idBasket)){
+            return new LinkedList<Record>();
+        }
         List<Record> list;
         Basket basket = basketRepository.findOne(idBasket);
         if (basket == null) {
@@ -163,6 +178,9 @@ public class DataSourceImp implements DataSource
 
     @Override
     public Record addNewRecord(long idUser, long idBasket, Record record) {
+        if(!hasPermissionGetBasket(idUser, idBasket)){
+            return new Record();
+        }
         Basket basket = basketRepository.findOne(idBasket);
         if (basket != null) {
             record.setBasket(basket);
@@ -179,6 +197,9 @@ public class DataSourceImp implements DataSource
 
     @Override
     public boolean deleteRecord(long idUser, long idBasket, long idRecord) {
+        if(!hasPermissionGetBasket(idUser, idBasket)){
+            return false;
+        }
         Record record = recordRepository.findOne(idRecord);
         if (record == null) {
             return false;

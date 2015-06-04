@@ -9,7 +9,7 @@ public class SingInForm
     private String username;
     private String password;
     private boolean staySigned = false;
-    private Who who = Who.Promoter;
+    private Who who = Who.None;
 
     public Who getWho()
     {
