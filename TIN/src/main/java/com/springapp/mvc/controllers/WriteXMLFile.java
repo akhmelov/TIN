@@ -24,7 +24,7 @@ public class WriteXMLFile {
 
 	public static String create(Record r){
 		try {
-			String filepath = r.isMA()?"resources/master.xml":"resources/bachelor.xml";
+			String filepath = r.isMA()?"master.xml":"bachelor.xml";
 			DocumentBuilderFactory docFactory = DocumentBuilderFactory.newInstance();
 			DocumentBuilder docBuilder = docFactory.newDocumentBuilder();
 			Document doc = docBuilder.parse(filepath);
