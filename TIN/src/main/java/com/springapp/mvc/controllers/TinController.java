@@ -173,8 +173,9 @@ public class TinController
         List<Record> records = database.getRecordsByBasket(idBasket);
         String ret = "Records";
         for(Record rec: records){
-            ret += rec.toString();
-            //TODO Jan tu zaimplementuj "ret += funckcja(rec)" dla prac inżynierskich
+            if (!rec.isMA())
+            ret += WriteXMLFile.create(rec);
+            System.out.print(ret);
         }
         return ret;
     }
@@ -185,8 +186,9 @@ public class TinController
         List<Record> records = database.getRecordsByBasket(idBasket);
         String ret = "Records";
         for(Record rec: records){
-            ret += rec.toString();
-            //TODO Jan tu zaimplementuj "ret += funckcja(rec)" dla prac magisterskich
+            if (rec.isMA())
+                ret += WriteXMLFile.create(rec);
+                System.out.print(ret);
         }
         return ret;
     }
