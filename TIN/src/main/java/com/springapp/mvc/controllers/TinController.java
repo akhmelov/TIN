@@ -36,10 +36,6 @@ public class TinController
     @RequestMapping(method = RequestMethod.GET)
     public ModelAndView home(ModelMap modelMap)
     {
-//        User olek = new User("asmolik@lol", "Olek", "Sm");
-//        database.saveUser(olek);
-//
-//        session.setId(1);
         ModelAndView modelAndView = new ModelAndView(App.HOME);
         modelAndView.addObject("singInForm", new SingInForm());
         return modelAndView;
@@ -48,20 +44,29 @@ public class TinController
     @RequestMapping(value = App.HOME, method = RequestMethod.POST)
     public String homePost(@ModelAttribute("SpringWeb") SingInForm singInForm)
     {   //TODO
+        User user;
         ModelAndView modelAndView = new ModelAndView();
         if(singInForm.getUsername().equals(App.ADMIN_USERNAME) && singInForm.getPassword().equals(App.ADMIN_PASSWORD)){
             singInForm.setWho(SingInForm.Who.Admin);
+            session.setId(0);
+        } else {
+            List<User> users = database.getUserByMail(singInForm.getUsername());
+            if(!users.isEmpty()){
+                user = database.getUserByMail(singInForm.getUsername()).get(0);
+                singInForm.setWho(SingInForm.Who.Promoter);
+                session.setId(user.getId());
+            } else {
+                singInForm.setWho(SingInForm.Who.None);
+            }
         }
         switch (singInForm.getWho())
         {
             case Promoter:
-                User user = database.getUserByMail(singInForm.getUsername()).get(0);
-                session.setId(user.getId());
                 return "redirect:" + App.BASKETS;
             case Admin:
                 return "redirect:.." + App.ADMIN_CONSTROLLER_URL + App.ADMIN;
             default:
-                return "redirect:" + App.BASKETS;
+                return "redirect:.." +App.TIN_CONTROLLER_URL;
         }
     }
 

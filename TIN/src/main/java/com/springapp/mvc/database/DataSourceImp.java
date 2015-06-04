@@ -32,7 +32,8 @@ public class DataSourceImp implements DataSource
 
     @Override
     public List<User> getUserByMail(String mail) {
-        return userRepository.findByMail(mail);
+        List<User> ret = userRepository.findByMail(mail);
+        return ret;
     }
 
     @Override
