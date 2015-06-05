@@ -220,11 +220,12 @@ public class TinController
             return "You don't have permission";
         }
         List<Record> records = database.getRecordsByBasket(idBasket);
-        String ret = "Records";
-        for(Record rec: records){
-            if (!rec.isMA())
-            ret += WriteXMLFile.create(rec);
-            System.out.print(ret);
+        String ret="";
+        for(Record rec: records) {
+            if (!rec.isMA()){
+                ret += WriteXMLFile.create(rec);
+                ret += '\n';
+            }
         }
         return ret;
     }
@@ -236,11 +237,12 @@ public class TinController
             return "You don't have permission";
         }
         List<Record> records = database.getRecordsByBasket(idBasket);
-        String ret = "Records";
+        String ret="";
         for(Record rec: records){
-            if (rec.isMA())
+            if (rec.isMA()){
                 ret += WriteXMLFile.create(rec);
-                System.out.print(ret);
+                ret += '\n';
+            }
         }
         return ret;
     }
