@@ -47,6 +47,7 @@ var idFields = new Array();
 function makeRecord(tmp)
 {
     var rec = creatRecord(tmp.id);
+    rec.setMA(tmp.ma);
     rec.setName(tmp.nameStudent);
     rec.setSurname(tmp.surnameStudent);
     rec.setOriginValue(nameStudent, tmp.nameStudent);
@@ -56,6 +57,8 @@ function makeRecord(tmp)
     rec.setOriginValue(titleEN, tmp.titleEN);
     rec.setOriginValue(namePromoter, tmp.namePromoter);
     rec.setOriginValue(surnamePromoter, tmp.surnamePromoter);
+    rec.setAbstractPL(tmp.abstractPL);
+    rec.setAbstractEN(tmp.abstractEN);
     //rec.setter(abstractPL, tmp.abstractPL);
     //rec.setter(abstractEN, tmp.abstractEN);
     rec.setOriginValue(keyWordsPL, tmp.keyWordsPL);
@@ -82,6 +85,38 @@ function creatRecord(id)
         record.record.attr("id", "record-" + id);
         record.linkNavPanel.attr("id", "arecord-" + id);
         record.linkNavPanel.attr("href", "#record-" + id);
+    }
+    record.setMA = function(MA){
+        record.MA = MA;
+        if(MA == false)
+            record.record.find("input#engineer").prop('checked',true);
+        if(MA == true)
+            record.record.find("input#magister").prop('checked',true);
+    }
+    record.setAbstractPL = function(text){
+        record.abstractPL = text;
+        record.record.find("textarea#abstractPL").val(text);
+    }
+    record.setAbstractEN = function(text){
+        record.abstractEN = text;
+        record.record.find("textarea#abstractEN").val(text);
+    }
+    record.getAbstractPL = function(){
+        var text = record.record.find("textarea#abstractPL").val();
+        record.abstractPL = text;
+        return text;
+    }
+    record.getAbstractEN = function(){
+        var text = record.record.find("textarea#abstractEN").val();
+        record.abstractEN = text;
+        return text;
+    }
+    record.isMA = function(){
+        var val = record.record.find('input[name=type]:checked').val();
+        if(val == "engineer")
+            return false;
+        if(val == "magister")
+            return true;
     }
     record.getId = function(){
         return record.record.attr("id").split("-", 2)[1];
@@ -191,6 +226,12 @@ function creatRecord(id)
         var rec = {
             id: record.getId(),
         }
+        var type = record.record.find("input[type='radio']:checked").get(0);
+        var idRadio = $(type).attr('id');
+        if(idRadio == "engineer")
+            rec["ma"] = false;
+        if(idRadio == "magister")
+            rec["ma"] = true;
         rec["" + nameStudent] = record.getter(nameStudent);
         rec["" + surnameStudent] = record.getter(surnameStudent);
         rec["" + mailStudent] = record.getter(mailStudent);
@@ -200,8 +241,8 @@ function creatRecord(id)
         rec["" + surnamePromoter] = record.getter(surnamePromoter);
         rec["" + abstractPL] = record.getter(surnamePromoter);
         rec["" + abstractEN] = record.getter(surnamePromoter);
-        //rec.setter(abstractPL, tmp.abstractPL); //TODO
-        //rec.setter(abstractEN, tmp.abstractEN); /TODO
+        rec[abstractPL] = record.getAbstractPL();
+        rec[abstractEN] = record.getAbstractEN();
         rec["" + keyWordsPL] = record.getter(keyWordsPL);
         rec["" + keyWordsEN] = record.getter(keyWordsEN);
         $.ajax({
