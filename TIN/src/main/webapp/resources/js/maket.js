@@ -20,6 +20,7 @@ $( document ).ready(function() {
 });
 
 var idFields = new Array();
+    var isMagister = "isMagister";
     var nameStudent = "nameStudent";
     var surnameStudent = "surnameStudent";
     var mailStudent = "mailStudent";
