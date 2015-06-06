@@ -12,3 +12,5 @@
 <script src="<c:url value="/resources/js/jquery.js" />"></script>
 <%-- koniec jquery --%>
 
+<link rel="stylesheet" href="/resources/css/common.css">
+

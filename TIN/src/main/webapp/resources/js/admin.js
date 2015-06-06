@@ -26,6 +26,10 @@ $( document ).ready(function() {
     });
 });
 
+$('#openModal').click(function(){
+    $('#myModal').show();
+});
+
 function deleteBasket(id){
     if(!confirm("Czy jestes pewen, ze chcesz usunac tego u¿ytkownika?"))
         return;

@@ -20,6 +20,7 @@ $( document ).ready(function() {
 });
 
 var idFields = new Array();
+    var isMagister = "isMagister";
     var nameStudent = "nameStudent";
     var surnameStudent = "surnameStudent";
     var mailStudent = "mailStudent";
@@ -422,12 +423,12 @@ function generateXML(){
         }
     }
     var link = document.createElement("a");
-    link.download = "data:XML_inzynierskie";
-    link.href = "generateXMLInz?idBasket=" + $("body").attr("id");
+    link.download = "XML_inzynierskie.xml";
+    link.href = "data:generateXMLInz?idBasket=" + $("body").attr("id");
     link.click();
 
     var linkMgr = document.createElement("a");
-    linkMgr.download = "data:XML_magisterskie";
-    linkMgr.href = "generateXMLMgr?idBasket=" + $("body").attr("id");
+    linkMgr.download = "XML_magisterskie.xml";
+    linkMgr.href = "data:generateXMLMgr?idBasket=" + $("body").attr("id");
     linkMgr.click();
 }
