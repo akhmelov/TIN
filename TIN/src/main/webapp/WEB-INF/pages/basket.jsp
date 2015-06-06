@@ -12,7 +12,6 @@
 	  <title>Moja strona</title>
 	</head>
 	<body id="${idBasket}">
-        <jsp:include page="common/headerPanel.jsp" />
         <div style="position: relative">
                 <jsp:include page="tags/navPanel.jsp" />
                 <div type="hidden" style="display: none;"> <!-- work space js -->
