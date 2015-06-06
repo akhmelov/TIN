@@ -4,7 +4,7 @@
 <html>
 <head>
     <jsp:include page="common/head.jsp"/>
-    <title>Instytut informatyki Wydział Elektroniki i Technik Informacyjnych</title>
+    <title>Instytut Informatyki Wydziału Elektroniki i Technik Informacyjnych PW</title>
 
     <link href="<c:url value="/resources/css/index.css" />" rel="stylesheet">
 </head>
@@ -14,14 +14,22 @@
     <div class="carousel-inner" role="listbox">
         <div class="item active">
             <img src="<c:url value="/resources/img/Warszawa_-_Politechnika.jpg" />" alt="Politechnika">
+
             <div class="carousel-caption">
-                <div style="text-align:center; background-color:rgba(255,255,255,0.35);">
+                <div style="text-align:center; background-color:rgba(255,255,255,0.5);">
+                    <br>
+
+                    <p style="color:black; font-size:150%">Edytor XML dla Repozytorium Prac Dyplomowych
+                        <br>Instytut Informatyki wydziału EiTI
+                    </p>
                     <br>
                     <font color="black">
-                        <table align="center" style="display: inline-table;" >
-                            <form:form class="navbar-form navbar-right" method="post" action="index" modelAttribute="singInForm" commandName="singInForm" enctype="multipart/form-data">
+                        <table align="center" style="display: inline-table;">
+                            <form:form class="navbar-form navbar-right" method="post" action="index"
+                                       modelAttribute="singInForm" commandName="singInForm"
+                                       enctype="multipart/form-data">
                                 <div class="form-group">
-                                    <form:input path="username" /><br>
+                                    <form:input path="username"/><br>
                                     <form:input path="password" type="password"/><br>
                                     <input type="submit" value="Submit"/>
                                 </div>
@@ -33,13 +41,14 @@
         </div>
         <div class="item">
             <img src="<c:url value="/resources/img/Warszawa_-_Politechnika.jpg" />" alt="Politechnika">
+
             <div class="carousel-caption">
                 Politechnika Warszawska
             </div>
         </div>
     </div>
 </div>
-<jsp:include page="common/footer.jsp" />
+<jsp:include page="common/footer.jsp"/>
 <script src="<c:url value="/resources/js/index.js" />"></script>
 </body>
 </html>
