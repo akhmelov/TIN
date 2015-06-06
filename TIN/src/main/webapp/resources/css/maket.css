@@ -38,7 +38,11 @@
 
 #navMenu.fixed-nav-bar{
     background-color: mediumseagreen;
+    height: 68px;
+    text-align: center;
+}
+#dodaj-rek.fixed-nav-bar{
+    background-color: mediumseagreen;
     height: 34px;
     text-align: center;
 }
-
