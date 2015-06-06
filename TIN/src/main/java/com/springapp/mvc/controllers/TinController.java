@@ -36,6 +36,11 @@ public class TinController
     @RequestMapping(method = RequestMethod.GET)
     public ModelAndView home(ModelMap modelMap)
     {
+        if(session.getWho().equals(UserSession.Who.Admin)){
+            return new ModelAndView("redirect:" + App.TIN_CONTROLLER_URL + App.ADMIN);
+        } else if(session.getWho().equals(UserSession.Who.Promoter)){
+            return new ModelAndView("redirect:" + App.TIN_CONTROLLER_URL + App.BASKETS);
+        }
         ModelAndView modelAndView = new ModelAndView(App.HOME);
         modelAndView.addObject("singInForm", new SingInForm());
         return modelAndView;
@@ -66,7 +71,7 @@ public class TinController
             case Promoter:
                 return "redirect:" + App.BASKETS;
             case Admin:
-                return "redirect:.." + App.ADMIN_CONSTROLLER_URL + App.ADMIN;
+                return "redirect:" + App.ADMIN;
             default:
                 return "redirect:.." + App.TIN_CONTROLLER_URL;
         }
@@ -252,5 +257,55 @@ public class TinController
         if(session.getWho().equals(UserSession.Who.None))
             return false;
         return true;
+    }
+
+    ///ADMIN section below
+
+    @RequestMapping(value = App.ADMIN, method = RequestMethod.GET)
+    public ModelAndView usersPage()
+    {
+        if(!hasPermission() && !session.getWho().equals(UserSession.Who.Admin)){
+            return new ModelAndView(App.TIN_CONTROLLER_URL);
+        }
+        ModelAndView modelAndView = new ModelAndView();
+        modelAndView.setViewName(App.ADMIN);
+        modelAndView.addObject("users", database.getUsers());
+        return  modelAndView;
+    }
+
+    @RequestMapping(value = App.ADMIN, method = RequestMethod.POST)
+    public String addNewUser(HttpServletRequest request)
+    {
+        if(!hasPermission() && !session.getWho().equals(UserSession.Who.Admin)){
+            return "redirect:" + App.TIN_CONTROLLER_URL;
+        }
+        String basketName = request.getParameter(App.NAME_NEW_BASKET_PARAMETER);
+        User olek = new User(basketName, basketName + "Olek44", basketName + "Sm44");
+        database.saveUser(olek);
+        return "redirect:" + App.ADMIN;
+    }
+
+    @RequestMapping(value = App.DELETE_USER, method = RequestMethod.POST)
+    public String deleteUser(HttpServletRequest request)
+    {
+        if(!hasPermission() && !session.getWho().equals(UserSession.Who.Admin)){
+            return "redirect:" + App.TIN_CONTROLLER_URL;
+        }
+        String idUser = request.getParameter(App.ID_EXIST_BASKET_PARAMETER);
+        int id = Integer.valueOf(idUser);
+        database.deleteUser(database.getUser(id));
+        return "redirect:" + App.ADMIN;
+    }
+
+    @RequestMapping(value = App.EDIT_USER, method = RequestMethod.POST)
+    public String editUser(HttpServletRequest request)
+    {
+        if(!hasPermission() && !session.getWho().equals(UserSession.Who.Admin)){
+            return "redirect:" + App.TIN_CONTROLLER_URL;
+        }
+        String idBasket = request.getParameter(App.ID_EXIST_BASKET_PARAMETER);
+        int id = Integer.valueOf(idBasket);
+        database.deleteBasket(1, id);
+        return "redirect:" + App.ADMIN;
     }
 }
