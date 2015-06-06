@@ -5613,12 +5613,12 @@ a.list-group-item:focus, a.list-group-item:hover {
 }
 
 .list-group-item-success {
-    color: #3c763d;
+    color: black;
     background-color:#afd8ef
 }
 
 a.list-group-item-success {
-    color: #3c763d
+    color: black
 }
 
 a.list-group-item-success .list-group-item-heading {
@@ -5626,7 +5626,7 @@ a.list-group-item-success .list-group-item-heading {
 }
 
 a.list-group-item-success:focus, a.list-group-item-success:hover {
-    color: #3c763d;
+    color: black;
     background-color: #afd8ef
 }
 
@@ -5656,7 +5656,7 @@ a.list-group-item-info:focus, a.list-group-item-info:hover {
 
 a.list-group-item-info.active, a.list-group-item-info.active:focus, a.list-group-item-info.active:hover {
     color: #fff;
-    background-color: #31708f;
+    background-color: #afd8ef;
     border-color: #31708f
 }
 

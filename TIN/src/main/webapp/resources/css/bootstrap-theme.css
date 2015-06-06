@@ -111,13 +111,13 @@
 }
 .btn-info:active,
 .btn-info.active {
-  background-color: #2aabd2;
-  border-color: #28a4c9;
+  background-color: #afd8ef;
+
 }
 .btn-info.disabled,
 .btn-info:disabled,
 .btn-info[disabled] {
-  background-color: #2aabd2;
+  background-color: #afd8ef;
   background-image: none;
 }
 .btn-warning {
@@ -174,7 +174,7 @@
 .dropdown-menu > .active > a,
 .dropdown-menu > .active > a:hover,
 .dropdown-menu > .active > a:focus {
-  background-color: #2e6da4;
+  background-color: #afd8ef;
   background-repeat: repeat-x;
 }
 .navbar-default {
@@ -215,7 +215,7 @@
   .navbar .navbar-nav .open .dropdown-menu > .active > a:hover,
   .navbar .navbar-nav .open .dropdown-menu > .active > a:focus {
     color: #fff;
-    background-color: #337ab7;
+    background-color: #afd8ef;
     background-repeat: repeat-x;
   }
 }

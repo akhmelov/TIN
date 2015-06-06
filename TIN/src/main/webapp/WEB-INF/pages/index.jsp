@@ -14,13 +14,13 @@
     <div class="carousel-inner" role="listbox">
         <div class="item active">
             <img src="<c:url value="/resources/img/Warszawa_-_Politechnika.jpg" />" alt="Politechnika">
-            <div class="carousel-caption">
-                <div style="text-align:center">
+            <div class="carousel-caption" >
+                <div style="text-align:center" >
                     <font color="black">
                         <table style="display: inline-table;">
                             <form:form class="navbar-form navbar-right" method="post" action="index" modelAttribute="singInForm" commandName="singInForm" enctype="multipart/form-data">
-                                <div class="form-group">
-                                    <form:input path="username" />
+                                <div class="form-group" color="white">
+                                    <form:input path="username" /><br>
                                     <form:input path="password" type="password"/>
                                 </div>
                                 <input type="submit" value="Submit"/>
