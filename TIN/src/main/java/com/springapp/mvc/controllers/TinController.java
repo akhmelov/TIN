@@ -230,9 +230,10 @@ public class TinController
             if (!rec.isMA()){
                 if (ret=="")
                     ret += WriteXMLFile.create(rec);
-                else
+                else {
+                    ret += "\r\n\r\n";
                     ret += WriteXMLFile.create(rec).substring(54);
-                ret += "\r\n";
+                }
             }
         }
         return ret;
@@ -250,9 +251,10 @@ public class TinController
             if (rec.isMA()){
                 if (ret=="")
                     ret += WriteXMLFile.create(rec);
-                else
+                else {
+                    ret += "\r\n\r\n";
                     ret += WriteXMLFile.create(rec).substring(54);
-                ret += "\r\n";
+                }
             }
         }
         return ret;
