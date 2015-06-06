@@ -5,6 +5,7 @@
   z-index: 9999;
   width: 20%;
   height: 100%;
+
 }
 .btnseg{
   top: 0;
@@ -23,7 +24,11 @@
     background-color: #fffdbf;
 }
 
-.navbar-collapse {
+.navbar {
+
+    height: 50px;
+    top:0;
+    margin-top:0;
     padding-right: 15px;
     padding-left: 15px;
     overflow-x: visible;
@@ -33,5 +38,7 @@
 
 #navMenu.fixed-nav-bar{
     background-color: mediumseagreen;
+    height: 34px;
+    text-align: center;
 }
 

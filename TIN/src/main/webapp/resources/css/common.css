@@ -1,10 +1,9 @@
 .footer {
     width: 100%;
-    background-color: gainsboro;
-    min-height: 20px;
+    background-color: #eeeeee;
+    height: auto;
     position: relative;
     margin-bottom: 0px;
     bottom: 0px;
-    font-size: 10px;
     text-align: center;
 }
