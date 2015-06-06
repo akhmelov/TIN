@@ -136,7 +136,7 @@
         </div> <!-- /row -->
         <br/>
         <button type="button" id="save" class="btn btn-success">Zapisz</button>
-        <button type="button" id="detele" class="btn btn-danger">Usu?</button>
+        <button type="button" id="detele" class="btn btn-danger">Usun</button>
     </span>
             </span>
     </div>
