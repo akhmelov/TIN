@@ -40,13 +40,13 @@
             <div class="item active">
                 <img src="<c:url value="/resources/img/Warszawa_-_Politechnika.jpg" />" alt="Politechnika">
                 <div class="carousel-caption">
-                    Politechnikwa Warszawska
+                    Politechnika Warszawska
                 </div>
             </div>
             <div class="item">
                 <img src="<c:url value="/resources/img/Warszawa_-_Politechnika.jpg" />" alt="Politechnika">
                 <div class="carousel-caption">
-                    Politechnikwa Warszawska
+                    Politechnika Warszawska
                 </div>
             </div>
         </div>
