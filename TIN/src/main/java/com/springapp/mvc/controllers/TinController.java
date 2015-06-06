@@ -225,10 +225,12 @@ public class TinController
             return "You don't have permission";
         }
         List<Record> records = database.getRecordsByBasket(idBasket);
-        String ret = "Records";
-        for(Record rec: records){
-            ret += rec.toString();
-            //TODO Jan tu zaimplementuj "ret += funckcja(rec)" dla prac inżynierskich
+        String ret="";
+        for(Record rec: records) {
+            if (!rec.isMA()){
+                ret += WriteXMLFile.create(rec);
+                ret += '\n';
+            }
         }
         return ret;
     }
@@ -240,10 +242,12 @@ public class TinController
             return "You don't have permission";
         }
         List<Record> records = database.getRecordsByBasket(idBasket);
-        String ret = "Records";
+        String ret="";
         for(Record rec: records){
-            ret += rec.toString();
-            //TODO Jan tu zaimplementuj "ret += funckcja(rec)" dla prac magisterskich
+            if (rec.isMA()){
+                ret += WriteXMLFile.create(rec);
+                ret += '\n';
+            }
         }
         return ret;
     }
