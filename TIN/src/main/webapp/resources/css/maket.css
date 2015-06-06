@@ -1,6 +1,6 @@
 .fixed-nav-bar {
   position: fixed;
-  top: 51px;
+  top: 0px;
   right: 0;
   z-index: 9999;
   width: 20%;
