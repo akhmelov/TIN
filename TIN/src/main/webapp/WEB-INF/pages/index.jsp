@@ -15,15 +15,16 @@
         <div class="item active">
             <img src="<c:url value="/resources/img/Warszawa_-_Politechnika.jpg" />" alt="Politechnika">
             <div class="carousel-caption">
-                <div style="text-align:center">
+                <div style="text-align:center; background-color:rgba(255,255,255,0.35);">
+                    <br>
                     <font color="black">
-                        <table style="display: inline-table;">
+                        <table align="center" style="display: inline-table;" >
                             <form:form class="navbar-form navbar-right" method="post" action="index" modelAttribute="singInForm" commandName="singInForm" enctype="multipart/form-data">
                                 <div class="form-group">
-                                    <form:input path="username" />
-                                    <form:input path="password" type="password"/>
+                                    <form:input path="username" /><br>
+                                    <form:input path="password" type="password"/><br>
+                                    <input type="submit" value="Submit"/>
                                 </div>
-                                <input type="submit" value="Submit"/>
                             </form:form>
                         </table>
                     </font>
