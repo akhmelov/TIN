@@ -1,3 +1,4 @@
+<%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01//EN">
@@ -8,7 +9,7 @@
         <link href="<c:url value="/resources/css/maket.css" />" rel="stylesheet">
         <script src="<c:url value="/resources/js/maket.js" />"></script>
 
-	  <title>My first styled page</title>
+	  <title>Moja strona</title>
 	</head>
 	<body id="${idBasket}">
         <jsp:include page="common/headerPanel.jsp" />

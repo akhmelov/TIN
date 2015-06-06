@@ -1,19 +1,17 @@
+<%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01//EN">
 <html>
 	<head>
-		<jsp:include page="common/head.jsp"/>
 
         <link href="<c:url value="/resources/css/maket.css" />" rel="stylesheet">
         <script src="<c:url value="/resources/js/maket.js" />"></script>
 
-	  <title>My first styled page</title>
+	  <title>Moja strona</title>
 	</head>
 	<body>
-        <jsp:include page="common/headerPanel.jsp" />
-        <div style="position: relative">
-                <jsp:include page="tags/navPanel.jsp" />
+                <div style="position: relative">
                 <div type="hidden" style="display: none;"> <!-- work space js -->
                     <jsp:include page="tags/record.jsp"/>
                 </div>

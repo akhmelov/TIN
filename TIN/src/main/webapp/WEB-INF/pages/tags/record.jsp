@@ -6,7 +6,7 @@
 </a>
 <div id="contentPanel" class="panel panel-default" style="width: 80%; border-color: black; border-width: 2px;">
     <div class="panel-heading">
-        <h3 class="panel-title">Panel title</h3>
+        <h3 class="panel-title">Profil studenta</h3>
     </div>
     <div class="panel-body">
         <div class="row">
@@ -29,7 +29,7 @@
             <div class="col-lg-3">
                 <div class="input-group input-group-sm">
                     <span class="input-group-addon">
-                        Name
+                        Imie
                     </span>
                     <input type="text" id="nameStudent" class="form-control" aria-label="..." placeholder="Imie">
                 </div><!-- /input-group -->
@@ -37,7 +37,7 @@
             <div class="col-lg-3">
                 <div class="input-group input-group-sm">
                     <span class="input-group-addon">
-                        Surname
+                        Nazwisko
                     </span>
                     <input id="surnameStudent" type="text" class="form-control" aria-label="..." placeholder="Nazwisko">
                 </div><!-- /input-group -->
@@ -97,7 +97,7 @@
             <div class="col-lg-6">
                 <form role="form">
                     <div class="form-group">
-                        <label for="comment">Abstract PL:</label>
+                        <label for="comment">Abstrakt PL:</label>
                         <textarea class="form-control" id="abstractPL" rows="5" id="comment"></textarea>
                     </div>
                 </form>
@@ -107,7 +107,7 @@
             <div class="col-lg-6">
                 <form role="form">
                     <div class="form-group">
-                        <label for="comment">Abstract EN:</label>
+                        <label for="comment">Abstrakt EN:</label>
                         <textarea class="form-control" id="abstractEN" rows="5" id="comment"></textarea>
                     </div>
                 </form>
@@ -117,7 +117,7 @@
             <div class="col-lg-8">
                 <div class="input-group input-group-sm">
                       <span class="input-group-addon">
-                        Keywords PL
+                        Slowa kluczowe PL
                       </span>
                       <input type="text" id="keyWordsPL" class="form-control" aria-label="..." placeholder="">
                 </div><!-- /input-group -->
@@ -128,14 +128,16 @@
             <div class="col-lg-8">
                 <div class="input-group input-group-sm">
                       <span class="input-group-addon">
-                        Keywords EN
+                        Slowa kluczowe EN
                       </span>
                       <input type="text" id="keyWordsEN" class="form-control" aria-label="..." placeholder="">
                 </div><!-- /input-group -->
             </div><!-- /.col-lg-6 -->
         </div> <!-- /row -->
         <br/>
-        <button type="button" id="save" class="btn btn-success">Save</button>
-        <button type="button" id="detele" class="btn btn-danger">Delete</button>
+        <button type="button" id="save" class="btn btn-success">Zapisz</button>
+        <button type="button" id="detele" class="btn btn-danger">Usu?</button>
+    </span>
+            </span>
     </div>
 </div>

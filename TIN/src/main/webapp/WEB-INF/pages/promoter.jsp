@@ -15,11 +15,11 @@
 <h2>Submitted Student Information</h2>
 <table>
     <tr>
-        <td>Name</td>
+        <td>Imie</td>
         <td>${name}</td>
     </tr>
     <tr>
-        <td>Age</td>
+        <td>Wiek</td>
         <td>${age}</td>
     </tr>
     <tr>

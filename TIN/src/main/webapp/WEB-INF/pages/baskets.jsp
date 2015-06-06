@@ -1,3 +1,4 @@
+<%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%--
   Created by IntelliJ IDEA.
@@ -10,7 +11,7 @@
 <html>
     <head>
         <jsp:include page="common/head.jsp"/>
-        <title>Spring MVC Form Handling</title>
+        <title>Moja strona</title>
 
         <link href="<c:url value="/resources/css/baskets.css" />" rel="stylesheet">
         <script src="<c:url value="/resources/js/baskets.js" />"></script>
