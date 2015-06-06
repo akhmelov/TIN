@@ -228,8 +228,11 @@ public class TinController
         String ret="";
         for(Record rec: records) {
             if (!rec.isMA()){
-                ret += WriteXMLFile.create(rec);
-                ret += '\n';
+                if (ret=="")
+                    ret += WriteXMLFile.create(rec);
+                else
+                    ret += WriteXMLFile.create(rec).substring(54);
+                ret += "\r\n";
             }
         }
         return ret;
@@ -245,8 +248,11 @@ public class TinController
         String ret="";
         for(Record rec: records){
             if (rec.isMA()){
-                ret += WriteXMLFile.create(rec);
-                ret += '\n';
+                if (ret=="")
+                    ret += WriteXMLFile.create(rec);
+                else
+                    ret += WriteXMLFile.create(rec).substring(54);
+                ret += "\r\n";
             }
         }
         return ret;
