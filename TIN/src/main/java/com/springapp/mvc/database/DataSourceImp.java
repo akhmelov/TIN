@@ -93,15 +93,15 @@ public class DataSourceImp implements DataSource
     }
 
     @Override
-    public void deleteBasket(long idUser, long idBasket) {
-        if(!hasPermissionGetBasket(idUser, idBasket)){
-            return;
-        }
-        Basket basket = basketRepository.findOne(idBasket);
-        if (basket != null) {
-            basketRepository.delete(basket);
-        }
+     public void deleteBasket(long idUser, long idBasket) {
+    if(!hasPermissionGetBasket(idUser, idBasket)){
+        return;
     }
+    Basket basket = basketRepository.findOne(idBasket);
+    if (basket != null) {
+        basketRepository.delete(idBasket);
+    }
+}
 
     @Override
     public Record getRecordById(long id) {
