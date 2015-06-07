@@ -19,6 +19,8 @@ public class User
     private String name;
     @Column
     private String surname;
+    @Column
+    private String password;
 
     @OneToMany(fetch = FetchType.LAZY, cascade = CascadeType.ALL, mappedBy = "user")
     private List<Basket> baskets;
@@ -87,6 +89,16 @@ public class User
 
     public void setId(long id) {
         this.id = id;
+    }
+
+    public String getPassword()
+    {
+        return password;
+    }
+
+    public void setPassword(String password)
+    {
+        this.password = password;
     }
 
     public String getMail() {

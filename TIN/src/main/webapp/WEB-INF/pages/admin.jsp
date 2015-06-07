@@ -25,7 +25,7 @@
                 <th>Mail</th>
                 <th>Surname</th>
                 <th>Name</th>
-                <th>Position</th>
+                <th>Password</th>
                 <th></th>
                 <th></th>
             </tr>
@@ -37,9 +37,9 @@
                     </td>
                     <td><c:out value="${listVar.surname}"/></td>
                     <td><c:out value="${listVar.name}"/></td>
-                    <td><c:out value=""/>test</td>
+                    <td><c:out value="${listVar.password}"/></td>
                     <td>
-                        <span id="<c:out value="${listVar.id}"/>" class="glyphicon glyphicon-pencil" aria-hidden="true"></span>
+                        <span id="<c:out value="${listVar.id}"/>" class="glyphicon glyphicon-pencil" onclick="editUser(${listVar.id})" aria-hidden="true"></span>
                     </td>
                     <td>
                         <span id="<c:out value="${listVar.id}"/>" class="glyphicon glyphicon-trash" onclick="deleteBasket(${listVar.id})" aria-hidden="true"></span>
@@ -49,29 +49,39 @@
         </table>
         <button type="button" id="add" class="btn btn-success">Dodaj</button>
     </div>
-
-
-    <!-- Trigger the modal with a button -->
-    <button type="button" id="openModal" class="btn btn-info btn-lg" data-toggle="modal" data-target="#myModal">Otworz</button>
-
     <!-- Modal -->
-    <div id="myModal" class="modal fade" role="dialog">
-        <div class="modal-dialog">
-
-            <!-- Modal content-->
-            <div class="modal-content">
-                <div class="modal-header">
-                    <button type="button" class="close" data-dismiss="modal">&times;</button>
-                    <h4 class="modal-title">Naglowek</h4>
+    <div hidden="hidden">
+        <div id="dialog" title="Basic dialog">
+            <form id="userForm" class="navbar-form navbar-right userAddForm" method="post">
+                <div class="form-group">
+                    <div class="input-group input-group-sm">
+                        <span class="input-group-addon">
+                            Mail
+                        </span>
+                        <input type="text" name="mail" id="mail">
+                    </div>
+                    <div class="input-group input-group-sm">
+                        <span class="input-group-addon">
+                            Name
+                        </span>
+                        <input type="text" name="name" id="name">
+                    </div>
+                    <div class="input-group input-group-sm">
+                        <span class="input-group-addon">
+                            Surname
+                        </span>
+                        <input type="text" name="surname" id="surname">
+                    </div>
+                    <div class="input-group input-group-sm">
+                        <span class="input-group-addon">
+                            Password
+                        </span>
+                        <input type="text" name="password" id="password">
+                    </div>
+                    <br/>
+                    <button type="button" id="userForm" class="btn btn-success">Dodaj</button>
                 </div>
-                <div class="modal-body">
-                    <p>Tekst</p>
-                </div>
-                <div class="modal-footer">
-                    <button type="button" class="btn btn-default" data-dismiss="modal">Zamknij</button>
-                </div>
-            </div>
-
+            <form>
         </div>
     </div>
     <jsp:include page="common/footer.jsp" />

@@ -59,9 +59,14 @@ public class TinController
             List<User> users = database.getUserByMail(singInForm.getUsername());
             if(!users.isEmpty()){
                 user = database.getUserByMail(singInForm.getUsername()).get(0);
-                singInForm.setWho(SingInForm.Who.Promoter);
-                session.setWho(UserSession.Who.Promoter);
-                session.setId(user.getId());
+                if(user.getPassword() == null || user.getPassword().equals(singInForm.getPassword()))
+                {
+                    singInForm.setWho(SingInForm.Who.Promoter);
+                    session.setWho(UserSession.Who.Promoter);
+                    session.setId(user.getId());
+                } else {
+                    singInForm.setWho(SingInForm.Who.None);
+                }
             } else {
                 singInForm.setWho(SingInForm.Who.None);
             }
@@ -82,6 +87,23 @@ public class TinController
     {
         session.setWho(UserSession.Who.None);
         return  "redirect:" + App.TIN_CONTROLLER_URL;
+    }
+
+    @RequestMapping(value = App.CHANGE_PASSWORD_URL, method = RequestMethod.POST)
+    public @ResponseBody Boolean changePassword(HttpServletRequest request)
+    {
+        if(!hasPermission()){
+            return new Boolean(false);
+        }
+        String oldPassword = request.getParameter(App.OLD_PASSWORD);
+        String newPassword = request.getParameter(App.NEW_PASSWORD);
+        User user = database.getUser(session.getId());
+        if(user.getPassword() == null || user.getPassword().equals(oldPassword)){
+            user.setPassword(newPassword);
+            database.saveUser(user);
+            return new Boolean(true);
+        }
+        return new Boolean(false);
     }
 
     @RequestMapping(value = App.BASKETS, method = RequestMethod.GET)
@@ -287,8 +309,13 @@ public class TinController
         if(!hasPermission() && !session.getWho().equals(UserSession.Who.Admin)){
             return "redirect:" + App.TIN_CONTROLLER_URL;
         }
-        String basketName = request.getParameter(App.NAME_NEW_BASKET_PARAMETER);
-        User olek = new User(basketName, basketName + "Olek44", basketName + "Sm44");
+        String mail = request.getParameter("mail");
+        String name = request.getParameter("name");
+        String surname = request.getParameter("surname");
+        String password = request.getParameter("password");
+
+        User olek = new User(mail, name, surname);
+        olek.setPassword(password);
         database.saveUser(olek);
         return "redirect:" + App.ADMIN;
     }

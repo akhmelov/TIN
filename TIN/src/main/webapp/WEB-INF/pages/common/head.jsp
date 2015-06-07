@@ -11,6 +11,9 @@
 <%-- jquery--%>
 <script src="<c:url value="/resources/js/jquery.js" />"></script>
 <%-- koniec jquery --%>
+<script src="<c:url value="/resources/js/jquery-ui.js" />"></script>
 
 <link rel="stylesheet" href="/resources/css/common.css">
+
+
 
