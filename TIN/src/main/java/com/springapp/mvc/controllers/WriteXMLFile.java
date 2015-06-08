@@ -31,34 +31,34 @@ public class WriteXMLFile {
 
 			//Edit Title
 			Node editNode = doc.getElementsByTagName("titlePL").item(0);
-			editNode.setTextContent(r.getTitlePL());
+			editNode.setTextContent(validate(r.getTitlePL()));
 			editNode = doc.getElementsByTagName("titleEN").item(0);
-			editNode.setTextContent(r.getTitleEN());
+			editNode.setTextContent(validate(r.getTitleEN()));
 			//edit abstract
 			editNode= doc.getElementsByTagName("abstractPL").item(0);
-			editNode.setTextContent(r.getAbstractPL());
+			editNode.setTextContent(validate(r.getAbstractPL()));
 			editNode = doc.getElementsByTagName("abstractEN").item(0);
-			editNode.setTextContent(r.getAbstractEN());
+			editNode.setTextContent(validate(r.getAbstractEN()));
 			//Edit Keywords
 			editNode= doc.getElementsByTagName("keywordsPL").item(0);
-			editNode.setTextContent(r.getKeyWordsPL());
+			editNode.setTextContent(validate(r.getKeyWordsPL()));
 			editNode = doc.getElementsByTagName("keywordsEN").item(0);
-			editNode.setTextContent(r.getKeyWordsEN());
+			editNode.setTextContent(validate(r.getKeyWordsEN()));
 			editNode = doc.getElementsByTagName("issueDate").item(0);
-			editNode.setTextContent(r.getIssueDate());
+			editNode.setTextContent(validate(r.getIssueDate()));
 			// fill in author children
 			Node author = doc.getElementsByTagName("author").item(0);
 			NodeList list = author.getChildNodes();
 			for (int i = 0; i < list.getLength(); i++) {
 				Node node = list.item(i);
 				if ("name".equals(node.getNodeName())) {
-					node.setTextContent(r.getNameStudent());
+					node.setTextContent(validate(r.getNameStudent()));
 				}
 				if ("surname".equals(node.getNodeName())) {
-					node.setTextContent(r.getSurnameStudent());
+					node.setTextContent(validate(r.getSurnameStudent()));
 				}
 				if ("email".equals(node.getNodeName())) {
-					node.setTextContent(r.getMailStudent());
+					node.setTextContent(validate(r.getMailStudent()));
 				}
 			}
 			// fill in promoter children
@@ -69,10 +69,10 @@ public class WriteXMLFile {
 			for (int i = 0; i < list.getLength(); i++) {
 				Node node = list.item(i);
 				if ("name".equals(node.getNodeName())) {
-					node.setTextContent(r.getNamePromoter());
+					node.setTextContent(validate(r.getNamePromoter()));
 				}
 				if ("surname".equals(node.getNodeName())) {
-					node.setTextContent(r.getSurnamePromoter());
+					node.setTextContent(validate(r.getSurnamePromoter()));
 				}
 			}
 
@@ -96,4 +96,15 @@ public class WriteXMLFile {
 
 		return "FAILED";}
 
+	private static String validate(String s){
+		if (s != null) {
+			s = s.replace("&", "$!amp!$;");
+			s = s.replace("$!amp!$;", "&amp;");
+			s = s.replace("<", "&lt;");
+			s = s.replace(">", "&gt;");
+			s = s.replace("'", "&apos;");
+			s = s.replace("\"", "&quot;");
+		}
+		return s;
+	}
 }
