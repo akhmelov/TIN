@@ -18,6 +18,7 @@
     </head>
     <body>
         <jsp:include page="common/headerPanel.jsp" />
+        <button value="change" onclick="changePassword()">Change</button>
         <div id="workspace">
             <h2>Submitted Student Information</h2>
             <!-- Table -->

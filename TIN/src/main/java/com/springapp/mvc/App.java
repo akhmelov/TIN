@@ -30,6 +30,9 @@ public class App
     public static final String GENERATE_XML_MGR = "generateXMLMgr";
     public static final String ADMIN_USERNAME = "admin";
     public static final String ADMIN_PASSWORD = "admin";
+    public static final String CHANGE_PASSWORD_URL = "changePassword";
+    public static final String OLD_PASSWORD = "oldPassword";
+    public static final String NEW_PASSWORD = "newPassword";
     public static final String LOG_OUT = "logOut";
 
 
