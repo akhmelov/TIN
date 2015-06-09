@@ -441,7 +441,7 @@ function generateXML(){
     //}
     //if (master>0) {
         var linkMgr = document.createElement("a");
-        linkMgr.download = "data:XML_magisterskie";
+        linkMgr.download = "generateXMLMgr.txt?idBasket=" + $("body").attr("id");
         linkMgr.href = "generateXMLMgr.txt?idBasket=" + $("body").attr("id");
         $(linkMgr).attr('target', '_blank');
         linkMgr.click();

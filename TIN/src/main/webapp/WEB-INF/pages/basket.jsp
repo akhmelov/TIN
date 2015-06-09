@@ -9,7 +9,7 @@
         <link href="<c:url value="/resources/css/maket.css" />" rel="stylesheet">
         <script src="<c:url value="/resources/js/maket.js" />"></script>
 
-	  <title>Moja strona</title>
+	  <title>Koszyk</title>
 	</head>
 	<body id="${idBasket}" data-name-promoter="${namePromoter}" data-surname-promoter="${surnamePromoter}">
                 <div style="position: relative">

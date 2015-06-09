@@ -204,7 +204,7 @@ public class DataSourceImp implements DataSource
         if (record == null) {
             return false;
         } else {
-            recordRepository.delete(record);
+            recordRepository.delete(idRecord);
             return true;
         }
     }

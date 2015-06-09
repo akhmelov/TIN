@@ -20,7 +20,7 @@
         <jsp:include page="common/headerPanel.jsp" />
         <button value="changePassword" onclick="changePassword()">Change password</button>
         <div id="workspace">
-            <h2>Submitted Student Information</h2>
+            <h2>Basket list</h2>
             <!-- Table -->
             <table class="table table-striped">
                 <tr>
