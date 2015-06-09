@@ -21,7 +21,6 @@
         <!-- Table -->
         <table class="table table-striped">
             <tr>
-                <th>Index</th>
                 <th>Mail</th>
                 <th>Surname</th>
                 <th>Name</th>
@@ -31,15 +30,14 @@
             </tr>
             <c:forEach var="listVar" items="${users}" varStatus="loop">
                 <tr>
-                    <td><c:out value="${listVar.id}"/></td>
                     <td>
-                        <a href="basket?idBasket=${listVar.id}"><c:out value="${listVar.mail}"/></a>
+                        <c:out value="${listVar.mail}"/>
                     </td>
                     <td><c:out value="${listVar.surname}"/></td>
                     <td><c:out value="${listVar.name}"/></td>
                     <td><c:out value="${listVar.password}"/></td>
                     <td>
-                        <span id="<c:out value="${listVar.id}"/>" class="glyphicon glyphicon-pencil" onclick="editUser(${listVar.id})" aria-hidden="true"></span>
+                        <%--<span id="<c:out value="${listVar.id}"/>" class="glyphicon glyphicon-pencil" onclick="editUser(${listVar.id})" aria-hidden="true"></span>--%>
                     </td>
                     <td>
                         <span id="<c:out value="${listVar.id}"/>" class="glyphicon glyphicon-trash" onclick="deleteBasket(${listVar.id})" aria-hidden="true"></span>
@@ -51,37 +49,47 @@
     </div>
     <!-- Modal -->
     <div hidden="hidden">
-        <div id="dialog" title="Basic dialog">
+        <div id="dialog" title="Dodaj nowego uzytkownika">
             <form id="userForm" class="navbar-form navbar-right userAddForm" method="post">
-                <div class="form-group">
-                    <div class="input-group input-group-sm">
-                        <span class="input-group-addon">
-                            Mail
-                        </span>
-                        <input type="text" name="mail" id="mail">
+                <div class="row">
+                    <div class="col-lg-6">
+                        <div class="form-group">
+                            <div class="input-group input-group-sm">
+                                <input type="text" name="mail" id="mail" placeholder="Mail">
+                            </div>
+                        </div>
                     </div>
-                    <div class="input-group input-group-sm">
-                        <span class="input-group-addon">
-                            Name
-                        </span>
-                        <input type="text" name="name" id="name">
-                    </div>
-                    <div class="input-group input-group-sm">
-                        <span class="input-group-addon">
-                            Surname
-                        </span>
-                        <input type="text" name="surname" id="surname">
-                    </div>
-                    <div class="input-group input-group-sm">
-                        <span class="input-group-addon">
-                            Password
-                        </span>
-                        <input type="text" name="password" id="password">
-                    </div>
-                    <br/>
-                    <button type="button" id="userForm" class="btn btn-success">Dodaj</button>
                 </div>
-            <form>
+                <div class="row">
+                    <div class="col-lg-6">
+                        <div class="form-group">
+                            <div class="input-group input-group-sm">
+                                <input type="text" name="name" id="name" placeholder="Imie">
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-lg-6">
+                        <div class="form-group">
+                            <div class="input-group input-group-sm">
+                                <input type="text" name="surname" id="surname" placeholder="Nazwisko">
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-lg-6">
+                        <div class="form-group">
+                            <div class="input-group input-group-sm">
+                                <input type="text" name="password" id="password" placeholder="password">
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <br/>
+                <button type="button" id="userForm" class="btn btn-success">Dodaj</button>
+            </form>
         </div>
     </div>
     <jsp:include page="common/footer.jsp" />

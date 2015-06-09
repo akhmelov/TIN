@@ -10,10 +10,10 @@ $( document ).ready(function() {
     $("button#userForm").click(function(){
 
         var userForm = $("form#userForm");
-        var mail = userForm.find("#name").val();
+        var mail = userForm.find("#mail").val();
         var name = userForm.find("#name").val();
-        var surname = userForm.find("#name").val();
-        var password = userForm.find("#name").val();
+        var surname = userForm.find("#surname").val();
+        var password = userForm.find("#password").val();
 
         //if(mail.empty() || name.empty() || surname.empty() || password.empty())
         //{
@@ -54,7 +54,7 @@ function deleteBasket(id){
         return;
     var form = document.createElement("form");
     form.setAttribute("method", "POST");
-    form.setAttribute("action", "deleteBasket");
+    form.setAttribute("action", "deleteUser");
 
     var hiddenField = document.createElement("input");
     hiddenField.setAttribute("type", "hidden");
@@ -70,18 +70,18 @@ function deleteBasket(id){
 function editUser(id){
     $( "#dialogEdit" ).dialog();
     var userForm = $("form#userEditForm");
-    var mail = userForm.find("#name").val();
+    var mail = userForm.find("#mail").val();
     var name = userForm.find("#name").val();
-    var surname = userForm.find("#name").val();
-    var password = userForm.find("#name").val();
+    var surname = userForm.find("#surname").val();
+    var password = userForm.find("#password").val();
 }
 
 function editUserSend(id){
     var userForm = $("form#userEditForm");
-    var mail = userForm.find("#name").val();
+    var mail = userForm.find("#mail").val();
     var name = userForm.find("#name").val();
-    var surname = userForm.find("#name").val();
-    var password = userForm.find("#name").val();
+    var surname = userForm.find("#surname").val();
+    var password = userForm.find("#password").val();
 
     //if(mail.empty() || name.empty() || surname.empty() || password.empty())
     //{

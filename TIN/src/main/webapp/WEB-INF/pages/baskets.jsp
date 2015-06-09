@@ -18,29 +18,23 @@
     </head>
     <body>
         <jsp:include page="common/headerPanel.jsp" />
-        <button value="change" onclick="changePassword()">Change</button>
+        <button value="changePassword" onclick="changePassword()">Change password</button>
         <div id="workspace">
             <h2>Submitted Student Information</h2>
             <!-- Table -->
             <table class="table table-striped">
                 <tr>
-                    <th>Index</th>
                     <th>Name</th>
                     <th>Date Create</th>
-                    <th>Date Edit</th>
-                    <th>Position</th>
                     <th></th>
                     <th></th>
                 </tr>
                 <c:forEach var="listVar" items="${baskets}" varStatus="loop">
                     <tr>
-                        <td><c:out value="${listVar.id}"/></td>
                         <td>
                             <a href="basket?idBasket=${listVar.id}"><c:out value="${listVar.name}"/></a>
                         </td>
                         <td><c:out value="${listVar.dateCreate}"/></td>
-                        <td><c:out value="${listVar.dateEdit}"/></td>
-                        <td><c:out value="${listVar.contain}"/></td>
                         <td>
                             <span id="<c:out value="${listVar.id}"/>" class="glyphicon glyphicon-pencil" onclick="editBasket(${listVar.id})" aria-hidden="true"></span>
                         </td>

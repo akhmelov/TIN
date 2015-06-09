@@ -64,6 +64,7 @@ public class TinController
                     singInForm.setWho(SingInForm.Who.Promoter);
                     session.setWho(UserSession.Who.Promoter);
                     session.setId(user.getId());
+                    session.setUser(user);
                 } else {
                     singInForm.setWho(SingInForm.Who.None);
                 }
@@ -128,6 +129,8 @@ public class TinController
         int id = Integer.valueOf(idBasket);
 
         ModelAndView modelAndView = new ModelAndView(App.BASKET);
+        modelAndView.addObject("namePromoter", session.getUser().getName());
+        modelAndView.addObject("surnamePromoter", session.getUser().getSurname());
         modelAndView.addObject("idBasket", id);
         return modelAndView;
     }

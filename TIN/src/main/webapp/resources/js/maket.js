@@ -27,6 +27,7 @@ var idFields = new Array();
     var titleEN = "titleEN";
     var namePromoter = "namePromoter";
     var surnamePromoter = "surnamePromoter";
+    var issueDate = "issueDate";
     var abstractPL = "abstractPL";
     var abstractEN = "abstractEN";
     var keyWordsPL = "keyWordsPL";
@@ -38,8 +39,6 @@ var idFields = new Array();
     idFields[titleEN] = "titleEssayEN";
     idFields[namePromoter] = "namePromotor";
     idFields[surnamePromoter] = "surnamePromotor";
-    //idFields[abstractPL] = "abstractPL";
-    //idFields[abstractEN] = "abstractEN";
     idFields[keyWordsPL] = "keyWordsPL";
     idFields[keyWordsEN] = "keyWordsEN";
 
@@ -54,12 +53,13 @@ function makeRecord(tmp)
     rec.setOriginValue(mailStudent, tmp.mailStudent);
     rec.setOriginValue(titlePL, tmp.titlePL);
     rec.setOriginValue(titleEN, tmp.titleEN);
-    rec.setOriginValue(namePromoter, tmp.namePromoter);
-    rec.setOriginValue(surnamePromoter, tmp.surnamePromoter);
+    if(tmp.namePromoter != null)
+        rec.setOriginValue(namePromoter, tmp.namePromoter);
+    if(tmp.surnamePromoter != null)
+        rec.setOriginValue(surnamePromoter, tmp.surnamePromoter);
+    rec.setIssueDate(tmp.issueDate);
     rec.setAbstractPL(tmp.abstractPL);
     rec.setAbstractEN(tmp.abstractEN);
-    //rec.setter(abstractPL, tmp.abstractPL);
-    //rec.setter(abstractEN, tmp.abstractEN);
     rec.setOriginValue(keyWordsPL, tmp.keyWordsPL);
     rec.setOriginValue(keyWordsEN, tmp.keyWordsEN);
     return rec;
@@ -74,6 +74,7 @@ function creatRecord(id)
     var record = {
         changed: true //is saved on server?
     };
+
     record.origin = [];
 
     record.record = $("div#contentPanel.panel.panel-default").clone(true);
@@ -91,6 +92,15 @@ function creatRecord(id)
             record.record.find("input#engineer").prop('checked',true);
         if(MA == true)
             record.record.find("input#magister").prop('checked',true);
+    }
+    record.setIssueDate = function(text) {
+        record.issueDate = text;
+        record.record.find("select#issueDate").val(text);
+    }
+    record.getIssueDate = function() {
+        var text = record.record.find("select#issueDate option:selected").val();
+        record.issueDate = text;
+        return text;
     }
     record.setAbstractPL = function(text){
         record.abstractPL = text;
@@ -212,15 +222,6 @@ function creatRecord(id)
             record.linkNavPanel.removeClass("has-error");
         }
     }
-    //record.saveOnServer = function(){
-    //    var isOk = record.isOkTotalCheck();
-    //    if(!isOk){
-    //        alert("Masz bledy");
-    //        return;
-    //    }
-    //    alert("saved");
-    //    //TODO save
-    //}
     record.saveOnServer = function(){
         var rec = {
             id: record.getId(),
@@ -238,6 +239,7 @@ function creatRecord(id)
         rec["" + titleEN] = record.getter(titleEN);
         rec["" + namePromoter] = record.getter(namePromoter);
         rec["" + surnamePromoter] = record.getter(surnamePromoter);
+        rec["" + issueDate] = record.getIssueDate();
         rec["" + abstractPL] = record.getter(surnamePromoter);
         rec["" + abstractEN] = record.getter(surnamePromoter);
         rec[abstractPL] = record.getAbstractPL();
@@ -316,6 +318,9 @@ function creatRecord(id)
 
     init = function(){
         record.setId(id);
+        var test = $("body").attr("data-name-promoter");
+        record.setOriginValue(namePromoter, $("body").attr("data-name-promoter"));
+        record.setOriginValue(surnamePromoter, $("body").attr("data-surname-promoter"));
         record.record.focusout(function(){
             record.check();
         });

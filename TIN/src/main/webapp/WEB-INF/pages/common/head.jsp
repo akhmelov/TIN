@@ -1,6 +1,7 @@
 <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <!-- botstrap -->
 <!-- Latest compiled and minified CSS -->
+<link rel="stylesheet" href="/resources/css/jquery.css">
 <link rel="stylesheet" href="/resources/css/bootstrap.min.css">
 <!-- Optional theme -->
 <link rel="stylesheet" href="/resources/css/bootstrap-theme.css">

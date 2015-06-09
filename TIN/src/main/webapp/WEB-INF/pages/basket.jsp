@@ -11,7 +11,7 @@
 
 	  <title>Moja strona</title>
 	</head>
-	<body id="${idBasket}">
+	<body id="${idBasket}" data-name-promoter="${namePromoter}" data-surname-promoter="${surnamePromoter}">
                 <div style="position: relative">
                 <jsp:include page="tags/navPanel.jsp" />
                 <div type="hidden" style="display: none;"> <!-- work space js -->

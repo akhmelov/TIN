@@ -14,6 +14,7 @@ public class UserSession
 
     private Who who = Who.None;
     private long id;
+    private User user;
 
     public long getId() {
         return id;
@@ -33,5 +34,13 @@ public class UserSession
         this.who = who;
     }
 
+    public User getUser()
+    {
+        return user;
+    }
 
+    public void setUser(User user)
+    {
+        this.user = user;
+    }
 }
