@@ -14,10 +14,10 @@
                 <div class="input-group">
                     <form id="type">
                         <span class="input-group-addon">
-                            Inzynierska<input type="radio" name="type" id="engineer" checked aria-label="...">
+                            Inzynierska<input type="radio" name="type" value = "engineer" id="engineer" checked aria-label="...">
                         </span>
                         <span class="input-group-addon">
-                            Magisterska<input type="radio" name="type" id="magister" aria-label="...">
+                            Magisterska<input type="radio" name="type" value = "magister" id="magister" aria-label="...">
                         </span>
                     </form>
                 </div><!-- /input-group -->

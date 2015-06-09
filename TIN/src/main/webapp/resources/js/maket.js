@@ -420,28 +420,30 @@ function generateXML(){
     if(!confirm("Wszystkie zmiany zostana zapisane automatycznie, czy chcesz kontynuowac?"))
         return;
     saveAllRecords();
-    var master= 0;
-    var bch =0;
+    var master = 0;
+    var bch = 0;
     for(var el in records){
         if(!records[el].isOkTotalCheck()){
             alert("Masz bledy w formularzu, plik nie zostal wygenerowany, prosze poprawic bledy");
             return;
         }
-        if( records[el].isMA())
-        master++;
+        if( records[el].MA)
+            master ++;
         else
-        bch++;
+            bch ++;
     }
-    if(bch>0) {
+    //if(bch>0) {
         var link = document.createElement("a");
         link.download = "data:XML_inzynierskie";
-        link.href = "generateXMLInz?idBasket=" + $("body").attr("id");
+        link.href = "generateXMLInz.txt?idBasket=" + $("body").attr("id");
+        $(link).attr('target', '_blank');
         link.click();
-    }
-    if (master>0) {
+    //}
+    //if (master>0) {
         var linkMgr = document.createElement("a");
         linkMgr.download = "data:XML_magisterskie";
-        linkMgr.href = "generateXMLMgr?idBasket=" + $("body").attr("id");
+        linkMgr.href = "generateXMLMgr.txt?idBasket=" + $("body").attr("id");
+        $(linkMgr).attr('target', '_blank');
         linkMgr.click();
-    }
+    //}
 }
