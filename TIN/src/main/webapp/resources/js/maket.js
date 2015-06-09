@@ -68,7 +68,7 @@ function makeRecord(tmp)
 function creatRecord(id)
 {
     if (typeof id == 'undefined') {
-        alert("Error: record bez id");
+        alert("Error: praca bez id");
         return;
     }
     var record = {
@@ -256,7 +256,7 @@ function creatRecord(id)
             success: function(data){
                 if(data + "" !== "true")
                 {
-                    alert("Error: dane nie sa zapisane na serwerze");
+                    alert("Error: dane nie są zapisane na serwerze.");
                     return;
                 }
                 record.linkNavPanel.removeClass("has-change");
@@ -281,7 +281,7 @@ function creatRecord(id)
         });
     }
     record.delete = function(){
-        if(!confirm("Czy jestes pewen, ze chcesz usunac ten record: " + record.getName() + " " + record.getSurname() + "?"))
+        if(!confirm("Czy na pewno chcesz usunąć tę pracę: " + record.getName() + " " + record.getSurname() + "?"))
             return;
         var form = document.createElement("form");
         form.setAttribute("method", "POST");
@@ -307,11 +307,11 @@ function creatRecord(id)
                     record.record.remove();
                     record.linkNavPanel.remove();
                 } else {
-                    alert("Serwer odmowil w usuwaniu rekordu");
+                    alert("Serwer odmówił usunięcia pracy.");
                 }
             },
             error: function(request, status, error){
-                alert("Error: rekord nie usuniety\n" + request.responseText);
+                alert("Error: praca nie została usunięta.\n" + request.responseText);
             }
         });
     }
@@ -417,14 +417,14 @@ function saveAllRecords(){
 }
 
 function generateXML(){
-    if(!confirm("Wszystkie zmiany zostana zapisane automatycznie, czy chcesz kontynuowac?"))
+    if(!confirm("Wszystkie zmiany zostaną zapisane automatycznie, czy chcesz kontynuować?"))
         return;
     saveAllRecords();
     var master = 0;
     var bch = 0;
     for(var el in records){
         if(!records[el].isOkTotalCheck()){
-            alert("Masz bledy w formularzu, plik nie zostal wygenerowany, prosze poprawic bledy");
+            alert("Wykryto błędy w formularzu, plik nie został wygenerowany. Proszę poprawić błędy.");
             return;
         }
         if( records[el].MA)
@@ -441,7 +441,7 @@ function generateXML(){
     //}
     //if (master>0) {
         var linkMgr = document.createElement("a");
-        linkMgr.download = "data:XML_magisterskie";
+        linkMgr.download = "generateXMLMgr.txt?idBasket=" + $("body").attr("id");
         linkMgr.href = "generateXMLMgr.txt?idBasket=" + $("body").attr("id");
         $(linkMgr).attr('target', '_blank');
         linkMgr.click();

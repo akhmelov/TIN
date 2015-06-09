@@ -14,7 +14,7 @@
                 <div class="input-group">
                     <form id="type">
                         <span class="input-group-addon">
-                            Inzynierska<input type="radio" name="type" value = "engineer" id="engineer" checked aria-label="...">
+                            Inżynierska<input type="radio" name="type" value = "engineer" id="engineer" checked aria-label="...">
                         </span>
                         <span class="input-group-addon">
                             Magisterska<input type="radio" name="type" value = "magister" id="magister" aria-label="...">
@@ -29,9 +29,9 @@
             <div class="col-lg-3">
                 <div class="input-group input-group-sm">
                     <span class="input-group-addon">
-                        Imie
+                        Imię
                     </span>
-                    <input type="text" id="nameStudent" class="form-control" aria-label="..." placeholder="Imie">
+                    <input type="text" id="nameStudent" class="form-control" aria-label="..." placeholder="Imię">
                 </div><!-- /input-group -->
             </div><!-- /.col-lg-6 -->
             <div class="col-lg-3">
@@ -56,9 +56,9 @@
             <div class="col-lg-8">
                 <div class="input-group input-group-sm">
                               <span class="input-group-addon">
-                                Tytul pracy PL
+                                Tytuł pracy PL
                               </span>
-                    <input type="text" id="titleEssayPL" class="form-control" aria-label="..." placeholder="Tytul">
+                    <input type="text" id="titleEssayPL" class="form-control" aria-label="..." placeholder="Tytuł">
                 </div><!-- /input-group -->
             </div><!-- /.col-lg-6 -->
         </div><!-- /row -->
@@ -67,9 +67,9 @@
             <div class="col-lg-8">
                 <div class="input-group input-group-sm">
                               <span class="input-group-addon">
-                                Tytul pracy EN
+                                Tytuł pracy EN
                               </span>
-                    <input type="text" id="titleEssayEN" class="form-control" aria-label="..." placeholder="Tytul">
+                    <input type="text" id="titleEssayEN" class="form-control" aria-label="..." placeholder="Tytuł">
                 </div><!-- /input-group -->
             </div><!-- /.col-lg-6 -->
         </div> <!-- /row -->
@@ -80,7 +80,7 @@
                 <div class="input-group input-group-sm">
                   <span class="input-group-addon">
                   </span>
-                    <input type="text" id="namePromotor" class="form-control" aria-label="..." placeholder="Imie">
+                    <input type="text" id="namePromotor" class="form-control" aria-label="..." placeholder="Imię">
                 </div><!-- /input-group -->
             </div><!-- /.col-lg-6 -->
             <div class="col-lg-3">
@@ -129,7 +129,7 @@
             <div class="col-lg-6">
                 <form role="form">
                     <div class="form-group">
-                        <label for="comment">Abstrakt PL:</label>
+                        <label for="comment">Abstract PL:</label>
                         <textarea class="form-control" id="abstractPL" rows="5" id="comment"></textarea>
                     </div>
                 </form>
@@ -139,7 +139,7 @@
             <div class="col-lg-6">
                 <form role="form">
                     <div class="form-group">
-                        <label for="comment">Abstrakt EN:</label>
+                        <label for="comment">Abstract EN:</label>
                         <textarea class="form-control" id="abstractEN" rows="5" id="comment"></textarea>
                     </div>
                 </form>
@@ -149,7 +149,7 @@
             <div class="col-lg-8">
                 <div class="input-group input-group-sm">
                       <span class="input-group-addon">
-                        Slowa kluczowe PL
+                        Słowa kluczowe PL
                       </span>
                       <input type="text" id="keyWordsPL" class="form-control" aria-label="..." placeholder="">
                 </div><!-- /input-group -->
@@ -160,7 +160,7 @@
             <div class="col-lg-8">
                 <div class="input-group input-group-sm">
                       <span class="input-group-addon">
-                        Slowa kluczowe EN
+                        Słowa kluczowe EN
                       </span>
                       <input type="text" id="keyWordsEN" class="form-control" aria-label="..." placeholder="">
                 </div><!-- /input-group -->
@@ -168,7 +168,7 @@
         </div> <!-- /row -->
         <br/>
         <button type="button" id="save" class="btn btn-success">Zapisz</button>
-        <button type="button" id="detele" class="btn btn-danger">Usun</button>
+        <button type="button" id="detele" class="btn btn-danger">Usuń</button>
     </span>
             </span>
     </div>

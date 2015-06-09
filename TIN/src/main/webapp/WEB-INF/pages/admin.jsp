@@ -10,21 +10,21 @@
 <html>
 <head>
     <jsp:include page="common/head.jsp"/>
-    <title>Spring MVC Form Handling</title>
+    <title>Lista użytkowników</title>
 
     <link href="<c:url value="/resources/css/admin.css" />" rel="stylesheet">
 </head>
 <body>
     <div id="workspace">
         <jsp:include page="common/headerPanel.jsp" />
-        <h2>Submitted Student Information</h2>
+        <h2>Lista użytkowników</h2>
         <!-- Table -->
         <table class="table table-striped">
             <tr>
                 <th>Mail</th>
-                <th>Surname</th>
-                <th>Name</th>
-                <th>Password</th>
+                <th>Nazwisko</th>
+                <th>Imię</th>
+                <th>Hasło</th>
                 <th></th>
                 <th></th>
             </tr>

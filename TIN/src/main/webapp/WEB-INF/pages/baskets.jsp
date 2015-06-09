@@ -11,21 +11,21 @@
 <html>
     <head>
         <jsp:include page="common/head.jsp"/>
-        <title>Moja strona</title>
+        <title>Zbiory prac</title>
 
         <link href="<c:url value="/resources/css/baskets.css" />" rel="stylesheet">
         <script src="<c:url value="/resources/js/baskets.js" />"></script>
     </head>
     <body>
         <jsp:include page="common/headerPanel.jsp" />
-        <button value="changePassword" onclick="changePassword()">Change password</button>
+        <button value="changePassword" onclick="changePassword()">Zmień hasło</button>
         <div id="workspace">
-            <h2>Submitted Student Information</h2>
+            <h2>Zbiory prac dyplomowych</h2>
             <!-- Table -->
             <table class="table table-striped">
                 <tr>
-                    <th>Name</th>
-                    <th>Date Create</th>
+                    <th>Nazwa</th>
+                    <th>Data utworzenia</th>
                     <th></th>
                     <th></th>
                 </tr>
@@ -44,7 +44,7 @@
                     </tr>
                 </c:forEach>
             </table>
-            <button type="button" id="add" class="btn btn-success">Add</button>
+            <button type="button" id="add" class="btn btn-success">Dodaj</button>
         </div>
     </body>
 </html>
