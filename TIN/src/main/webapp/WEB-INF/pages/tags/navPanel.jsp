@@ -1,3 +1,4 @@
+<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <div id="navMenu" class="fixed-nav-bar">
     <a href="/tin/baskets" class="btn btn-info" role="button">Wróć</a>
     <button type="button" id="logOut" class="btn btn-danger">

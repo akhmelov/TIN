@@ -1,3 +1,4 @@
+<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <a href="#" id="linkToStudent" class="list-group-item list-group-item-success">
     <span id="nameStudent">No name</span>
     <span id="surnameStudent">No surname</span>
