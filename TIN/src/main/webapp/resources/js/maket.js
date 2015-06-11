@@ -429,7 +429,9 @@ function generateXML(){
         }
     }
     var link = document.createElement("a");
-    link.href = "generateXMLInz.txt?idBasket=" + $("body").attr("id");
+    link.setAttribute('href', 'data:text/plain;charset=utf-8,' + encodeURIComponent(text));
+
+    link.href = "generateXMLInz?idBasket=" + $("body").attr("id");
     link.download = "XML_inzynierskie.xml";
     document.body.appendChild(link);
     link.click();
@@ -450,7 +452,7 @@ function generateXMLmag(){
 
     var linkMgr = document.createElement("a");
     linkMgr.download = "XML_magisterskie.xml";
-    linkMgr.href = "generateXMLMgr.txt?idBasket=" + $("body").attr("id");
+    linkMgr.href = "generateXMLMgr?idBasket=" + $("body").attr("id");
     document.body.appendChild(linkMgr);
     linkMgr.click();
     document.body.removeChild(linkMgr);

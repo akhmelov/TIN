@@ -26,7 +26,6 @@ public class WriteXMLFile {
 
 	public static String create(Record r){
 		try {
-			System.out.print(r.getTitlePL()+'\n');
 			String filename = r.isMA()? "/master.xml" : "/bachelor.xml";
 			Resource rsrc = new ClassPathResource(filename);
 			DocumentBuilderFactory docFactory = DocumentBuilderFactory.newInstance();
@@ -88,7 +87,6 @@ public class WriteXMLFile {
 			transformer.setOutputProperty(OutputKeys.ENCODING, "UTF-8");
 			transformer.transform(new DOMSource(doc), new StreamResult(writer));
 			String output = writer.getBuffer().toString();
-			System.out.print(output);
 			return output;
 
 		} catch (ParserConfigurationException pce) {
