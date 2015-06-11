@@ -14,6 +14,7 @@
                 <div style="position: relative">
                 <div type="hidden" style="display: none;"> <!-- work space js -->
                     <jsp:include page="tags/record.jsp"/>
+                        <jsp:include page="tags/navPanel.jsp" />
                 </div>
                 <div id="studentsForm">
                 </div>
