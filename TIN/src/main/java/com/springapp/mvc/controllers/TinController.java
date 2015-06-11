@@ -243,7 +243,7 @@ public class TinController
         return new Boolean(false);
     }
 
-    @RequestMapping(value = App.GENERATE_XML_INZ)
+    @RequestMapping(value = App.GENERATE_XML_INZ, produces = "text/plain; charset=utf-8")
     public @ResponseBody String generateXMLInz(@RequestParam("idBasket") Integer idBasket)
     {
         if(!hasPermission()){
@@ -264,7 +264,7 @@ public class TinController
         return ret;
     }
 
-    @RequestMapping(value = App.GENERATE_XML_MGR)
+    @RequestMapping(value = App.GENERATE_XML_MGR, produces = "text/plain; charset=utf-8")
     public @ResponseBody String generateXMLMgr(@RequestParam("idBasket") Integer idBasket)
     {
         if(!hasPermission()){
