@@ -1,10 +1,13 @@
 package com.springapp.mvc.controllers;
 
+import java.io.File;
+import java.io.FileInputStream;
 import java.io.IOException;
 import java.io.StringWriter;
 import javax.xml.parsers.DocumentBuilder;
 import javax.xml.parsers.DocumentBuilderFactory;
 import javax.xml.parsers.ParserConfigurationException;
+import javax.xml.transform.OutputKeys;
 import javax.xml.transform.Transformer;
 import javax.xml.transform.TransformerException;
 import javax.xml.transform.TransformerFactory;
@@ -27,7 +30,8 @@ public class WriteXMLFile {
 			Resource rsrc = new ClassPathResource(filename);
 			DocumentBuilderFactory docFactory = DocumentBuilderFactory.newInstance();
 			DocumentBuilder docBuilder = docFactory.newDocumentBuilder();
-			Document doc = docBuilder.parse(rsrc.getFile().getAbsolutePath());
+			FileInputStream in = new FileInputStream(rsrc.getFile().getAbsolutePath());
+			Document doc = docBuilder.parse(in,"UTF-8");
 
 			//Edit Title
 			Node editNode = doc.getElementsByTagName("titlePL").item(0);
@@ -80,6 +84,7 @@ public class WriteXMLFile {
 			TransformerFactory transformerFactory = TransformerFactory.newInstance();
 			Transformer transformer = transformerFactory.newTransformer();
 			StringWriter writer = new StringWriter();
+			transformer.setOutputProperty(OutputKeys.ENCODING, "UTF-8");
 			transformer.transform(new DOMSource(doc), new StreamResult(writer));
 			String output = writer.getBuffer().toString();
 			return output;
