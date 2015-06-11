@@ -4,8 +4,9 @@
     <button type="button" id="logOut" class="btn btn-danger">
     <a style="color:#ffffff; background-color:transparent; text-decoration:none" href="logOut">Wyloguj się</a></button><br>
     <button type="button" id="addNewRecord" class="btn btn-success" onclick="addNewRecord();">Dodaj pracę</button>
-    <button type="button" id="saveAll" class="btn btn-success" onclick="saveAllRecords();">Zapisz</button>
-    <button type="button" id="XML" class="btn btn-success" onclick="generateXML();">Pobierz XML</button>
+    <button type="button" id="saveAll" class="btn btn-success" onclick="saveAllRecords();">Zapisz</button><br>
+    <button type="button" id="XML" class="btn btn-success" onclick="generateXML();">Pobierz Inż</button>
+    <button type="button" id="XML2" class="btn btn-success" onclick="generateXMLmag();">Pobierz Mgr</button>
     <nav >
         <!-- Fixed navigation bar content -->
         <div id="navbar" >
