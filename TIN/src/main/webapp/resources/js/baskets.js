@@ -4,11 +4,11 @@
 
 $( document ).ready(function() {
     $("button#add").click(function(){
-        var x = prompt("Prosze wpisac nazwe nowego koszyka: ");
+        var x = prompt("Proszę wpisać nazwę nowego zbioru: ");
         if(x == null) {
             return;
         } else if(x == ''){
-            alert("Wpisana pusta wartosc, koszyk nie dodany");
+            alert("Nie podano nazwy, zbiór nie został dodany.");
             return;
         }
         var form = document.createElement("form");
@@ -28,7 +28,7 @@ $( document ).ready(function() {
 });
 
 function deleteBasket(id){
-    if(!confirm("Czy jestes pewen, ze chcesz usunac ten koszyk?"))
+    if(!confirm("Czy na pewno chcesz usunąć ten zbiór?"))
         return
     var form = document.createElement("form");
     form.setAttribute("method", "POST");
@@ -46,11 +46,11 @@ function deleteBasket(id){
 }
 
 function editBasket(id){
-    var x = prompt("Prosze wpisac nowa nazwe koszyka: ");
+    var x = prompt("Proszę wpisac nową nazwę abioru: ");
     if(x == null) {
         return;
     } else if(x == ''){
-        alert("Wpisana pusta wartosc, koszyk nie zmieniony");
+        alert("Nie podano nazwy, nazwa zbioru nie została zmieniona.");
         return;
     }
     var form = document.createElement("form");
@@ -74,20 +74,20 @@ function editBasket(id){
 }
 
 function changePassword(){
-    var oldPassword = prompt("Prosze podac aktualnie haslo: ");
+    var oldPassword = prompt("Proszę podać obecne hasło: ");
     if(oldPassword == null) {
         return;
     }
-    var newPassword = prompt("Prosze podac nowe haslo: ");
+    var newPassword = prompt("Proszę podać nowe hasło: ");
     if(newPassword == null) {
         return;
     }
-    var newPasswordConfirm = prompt("Prosze podac powtorzyc nowe haslo: ");
+    var newPasswordConfirm = prompt("Proszę powtórzyć nowe hasło: ");
     if(newPasswordConfirm == null) {
         return;
     }
     if(newPassword != newPasswordConfirm){
-        alert("Podane haslo sie rozni od potwierdzenia, zmiana nie nastapila");
+        alert("Podane hasło rożni się od potwierdzenia, zmiana nie nastąpiła.");
         return;
     }
     var form = document.createElement("form");
@@ -111,13 +111,13 @@ function changePassword(){
         {
             if(data + "" == "true")
             {
-                alert("Zmiana hasla zostala zapisana na serwerze");
+                alert("Zmiana hasła zostala zapisana na serwerze.");
             } else {
-                alert("Serwer odmowil w zmianie hasla, sproboj ponownie");
+                alert("Serwer odmówił zmiany hasła, spróbuj ponownie.");
             }
         },
         error: function(request, status, error){
-            alert("Error: haslo nie zmienione\n" + request.responseText);
+            alert("Error: hasło nie zostało zmienione.\n" + request.responseText);
         }
     });
 }

@@ -50,7 +50,7 @@ $( document ).ready(function() {
 });
 
 function deleteBasket(id){
-    if(!confirm("Czy jestes pewen, ze chcesz usunac tego u�ytkownika?"))
+    if(!confirm("Czy jesteś pewny, że chcesz usunąć tego użytkownika?"))
         return;
     var form = document.createElement("form");
     form.setAttribute("method", "POST");
